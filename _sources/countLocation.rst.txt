@@ -1,0 +1,5 @@
+countLocation
+=============
+
+.. automodule:: countLocation
+  :members:

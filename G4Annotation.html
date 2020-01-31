@@ -1,0 +1,1042 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>G4Annotation &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="G4AnnotationCirculaire" href="G4AnnotationCirculaire.html" />
+    <link rel="prev" title="countTranscript" href="countTranscript.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="README.html" class="icon icon-home"> G4 Prediction in human transcriptom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="README.html">G4 Prediction in human transcriptom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="README.html">Docs</a> &raquo;</li>
+        
+      <li>G4Annotation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/G4Annotation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-G4Annotation">
+<span id="g4annotation"></span><h1>G4Annotation<a class="headerlink" href="#module-G4Annotation" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Copyright:</dt>
+<dd>Copyright Universite of Sherbrooke, departement of biochemistry and
+departement     of computation.</dd>
+<dt>Date:</dt>
+<dd>December 2017</dd>
+<dt>Description:</dt>
+<dd>This script aims to annote the pG4 region of one chromosome of one specie.
+From csv files which contain windows from G4RNA screener, this module
+annote the G4 region for each transcript.</dd>
+<dt>Data availability:</dt>
+<dd><ul class="first last simple">
+<li>fasta sequences used with G4RNA screener were download from Ensembl. The human assembly is GRCh38p12.</li>
+<li>G4RNA screener was launch in August 2018. Results may change if G4RNA is update later.</li>
+<li>biotypes (classes and subclasses) are downloaded from Ensembl via biomart in August 2018.</li>
+<li>transcripts informations are also downloaded from Ensembl in August 2018      and parsed by ReplaceInformation.py.</li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="G4Annotation.addCoordInlist">
+<code class="descclassname">G4Annotation.</code><code class="descname">addCoordInlist</code><span class="sig-paren">(</span><em>coordFeatureList</em>, <em>storageList</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.addCoordInlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores coordinate from a list of feature into an other list.</p>
+<p>Browses the initial list of coords of a feature, parse them and
+then add them in a list. This list stores all coords of a transcript (exon,
+intron and UTR).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>coordFeatureList</strong> (<em>list</em>) – contains coordinates for a feature (intron or exon).</li>
+<li><strong>storageList</strong> (<em>list</em>) – where the parsed coord are stored.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">storageList, list of coordinates updated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.addG4InGenome">
+<code class="descclassname">G4Annotation.</code><code class="descname">addG4InGenome</code><span class="sig-paren">(</span><em>G4InGenome</em>, <em>geneId</em>, <em>descriptionG4</em>, <em>locationInTranscript</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.addG4InGenome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds for each gene all pG4 in it and all location possible.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G4InGenome</strong> (<em>dictionary</em>) – id of gene with description of G4 and to them correspond
+all location of this G4.</li>
+<li><strong>geneId</strong> (<em>string</em>) – Ensembl id of the gene.</li>
+<li><strong>descriptionG4</strong> (<em>string</em>) – id of the G4 (chromosome, start, end, strand).</li>
+<li><strong>locationInTranscript</strong> (<em>string</em>) – location of G4 on this transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">G4InGenome updated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.addG4InTranscriptome">
+<code class="descclassname">G4Annotation.</code><code class="descname">addG4InTranscriptome</code><span class="sig-paren">(</span><em>G4InTranscript</em>, <em>transcriptId</em>, <em>descriptionG4</em>, <em>informationsOfG4</em>, <em>locationInTranscript</em>, <em>biotypeTranscript</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.addG4InTranscriptome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores each pG4 with its information in the transcriptom.</p>
+<p>This fonction add for each pG4 the informations from G4RNA screener
+(cGcC, g4H, sequence and G4NN) to the location of the pG4 and the
+transcript biotype. Those Information are stored in a dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G4InTranscript</strong> (<em>dictionary</em>) – contains all pG4 (key) and all info about it at the
+transcriptom level.</li>
+<li><strong>transcriptId</strong> (<em>string</em>) – id of the transcript.</li>
+<li><strong>descriptionG4</strong> (<em>string</em>) – id of the G4 (chromosome, start, end, strand).</li>
+<li><strong>informationsOfG4</strong> (<em>list</em>) – list of informations obtained by G4-screener
+(cGcC, g4H, sequence and G4NN).</li>
+<li><strong>locationInTranscript</strong> (<em>string</em>) – location of G4 on this transcript.</li>
+<li><strong>biotypeTranscript</strong> (<em>string</em>) – biotype of this this transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">G4InTranscript, contains id of transcripts with the description of
+G4 and their corresponding info of this G4.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.addTranscriptPerG4">
+<code class="descclassname">G4Annotation.</code><code class="descname">addTranscriptPerG4</code><span class="sig-paren">(</span><em>TranscriptPerG4</em>, <em>descriptionG4</em>, <em>transcriptId</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.addTranscriptPerG4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds for a pG4 all transcripts that contain him.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>TranscriptPerG4</strong> (<em>dictionary</em>) – contains all pG4 and all transcript possessing the
+pG4.</li>
+<li><strong>descriptionG4</strong> (<em>string</em>) – id of the G4 (chromosome, start, end, strand).</li>
+<li><strong>transcriptId</strong> (<em>string</em>) – id of the transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TranscriptPerG4 updated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.build_arg_parser">
+<code class="descclassname">G4Annotation.</code><code class="descname">build_arg_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.build_arg_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves paramters given in the command line.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.createDictionaryStrandByGene">
+<code class="descclassname">G4Annotation.</code><code class="descname">createDictionaryStrandByGene</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.createDictionaryStrandByGene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves strand for all genes of the chromosome.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>string</em>) – path of the index file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dico, contains strand for all genes of the chromosome.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.createListCodingProtein">
+<code class="descclassname">G4Annotation.</code><code class="descname">createListCodingProtein</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.createListCodingProtein" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a list all biotype from the coding protein.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">codingProtein, contain all biotype that are coding protein.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.extractionG4InGenome">
+<code class="descclassname">G4Annotation.</code><code class="descname">extractionG4InGenome</code><span class="sig-paren">(</span><em>directory</em>, <em>specie</em>, <em>chromosome</em>, <em>G4InGenome</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.extractionG4InGenome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes in a file all pG4 and all transcript that contains it.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title">Example</p>
+<p class="last">geneID|pG4Id   location1, location2, etc</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>directory</strong> (<em>string</em>) – directory for the outpu file.</li>
+<li><strong>specie</strong> (<em>string</em>) – short name of the specie (HS for example).</li>
+<li><strong>chromosome</strong> (<em>string</em>) – chromosome which is analyzed.</li>
+<li><strong>G4InGenome</strong> (<em>dictionary</em>) – id of gene with description of G4 and to them correspond
+all location of this G4.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.extractionG4InTranscript">
+<code class="descclassname">G4Annotation.</code><code class="descname">extractionG4InTranscript</code><span class="sig-paren">(</span><em>directory</em>, <em>specie</em>, <em>chromosome</em>, <em>G4InTranscript</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.extractionG4InTranscript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes in a file all pG4 and all transcript that contains it.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title">Example</p>
+<p class="last">transcriptId|pG4Id   cGcC G4H sequence G4NN location biotype</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>directory</strong> (<em>string</em>) – directory for the outpu file.</li>
+<li><strong>specie</strong> (<em>string</em>) – short name of the specie (HS for example).</li>
+<li><strong>chromosome</strong> (<em>string</em>) – chromosome which is analyzed.</li>
+<li><strong>G4InTranscript</strong> (<em>dictionary</em>) – contains all pG4 (key) and all info about it at the
+transcriptom level.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.extractionTranscriptPerG4">
+<code class="descclassname">G4Annotation.</code><code class="descname">extractionTranscriptPerG4</code><span class="sig-paren">(</span><em>directory</em>, <em>specie</em>, <em>chromosome</em>, <em>TranscriptPerG4</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.extractionTranscriptPerG4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes in a file all pG4 and all transcript that contains it.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title">Example</p>
+<p class="last">pG4Id1   transcriptId1, transcriptId2, etc</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>directory</strong> (<em>string</em>) – directory for the outpu file.</li>
+<li><strong>specie</strong> (<em>string</em>) – short name of the specie (HS for example).</li>
+<li><strong>chromosome</strong> (<em>string</em>) – chromosome which is analyzed.</li>
+<li><strong>TranscriptPerG4</strong> (<em>dictionary</em>) – contains all pG4 and their transcripts</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getChromosomalPositionForJunction">
+<code class="descclassname">G4Annotation.</code><code class="descname">getChromosomalPositionForJunction</code><span class="sig-paren">(</span><em>coord</em>, <em>strand</em>, <em>junLength</em>, <em>startIntron</em>, <em>endIntron</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getChromosomalPositionForJunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes chromosomal coordinates for a.</p>
+<p>This function will leads to a function depending on the strand of the
+junction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>coord</strong> (<em>integer</em>) – start of end of a junction.</li>
+<li><strong>strand</strong> (<em>string</em>) – strand of the junctino (1 or -1).</li>
+<li><strong>junLength</strong> (<em>integer</em>) – length of the junction from each side (by default 100).</li>
+<li><strong>startIntron</strong> (<em>integer</em>) – start of the intron from the junction.</li>
+<li><strong>endIntron</strong> (<em>integer</em>) – end of the intron from the junction.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">coord, the new coordinates.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">integer</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getChromosomalPositionForwardStrand">
+<code class="descclassname">G4Annotation.</code><code class="descname">getChromosomalPositionForwardStrand</code><span class="sig-paren">(</span><em>position</em>, <em>EXTENSION</em>, <em>startIntron</em>, <em>endIntron</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getChromosomalPositionForwardStrand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the chromosomal coordinatea from a forward junction.</p>
+<p>Gives real position (chromosomal) of start or end from a G4
+around a junction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>position</strong> (<em>integer</em>) – start of end of a junction.</li>
+<li><strong>EXTENSION</strong> (<em>integer</em>) – length of the junction from each side (by default 100).</li>
+<li><strong>startIntron</strong> (<em>integer</em>) – start of the intron from the junction.</li>
+<li><strong>endIntron</strong> (<em>integer</em>) – end of the intron from the junction.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">position, the new coordinates.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">integer</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getChromosomalPositionReverseStrand">
+<code class="descclassname">G4Annotation.</code><code class="descname">getChromosomalPositionReverseStrand</code><span class="sig-paren">(</span><em>position</em>, <em>EXTENSION</em>, <em>startIntron</em>, <em>endIntron</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getChromosomalPositionReverseStrand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the chromosomal coordinate from a reverse junction.</p>
+<p>Give real position (chromosomal) of start or end from a G4
+around a junction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>position</strong> (<em>integer</em>) – start of end of a junction.</li>
+<li><strong>EXTENSION</strong> (<em>integer</em>) – length of the junction from each side (by default 100).</li>
+<li><strong>startIntron</strong> (<em>integer</em>) – start of the intron from the junction.</li>
+<li><strong>endIntron</strong> (<em>integer</em>) – end of the intron from the junction.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">position, the new coordinate.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">integer</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getCoordOfTranscript">
+<code class="descclassname">G4Annotation.</code><code class="descname">getCoordOfTranscript</code><span class="sig-paren">(</span><em>start5</em>, <em>end5</em>, <em>start3</em>, <em>end3</em>, <em>exonList</em>, <em>intronList</em>, <em>strand</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getCoordOfTranscript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves start and end of a transcript.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start5</strong> (<em>integer</em>) – start of the 5’UTR.</li>
+<li><strong>end5</strong> (<em>integer</em>) – end of the 5’UTR.</li>
+<li><strong>start3</strong> (<em>integer</em>) – start of the 3’UTR.</li>
+<li><strong>end3</strong> (<em>integer</em>) – end of the 3’UTR.</li>
+<li><strong>exonList</strong> (<em>list</em>) – contain coordinates of all exons from a transcript.</li>
+<li><strong>intronList</strong> (<em>list</em>) – contain coordinates of all introns from a transcript.</li>
+<li><strong>strand</strong> (<em>string</em>) – strand of a transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">[inferiorCoord, superiorCoord], start and end of a transcript.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getInfoAboutpG4">
+<code class="descclassname">G4Annotation.</code><code class="descname">getInfoAboutpG4</code><span class="sig-paren">(</span><em>index</em>, <em>BiotypeByTranscript</em>, <em>listeG4InGeneEntire</em>, <em>G4InTranscript</em>, <em>G4InGenome</em>, <em>TranscriptPerG4</em>, <em>AnnotationTranscript</em>, <em>G4DetectedInGene</em>, <em>ProteinCoding</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getInfoAboutpG4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches all locations and biotype of a pG4.</p>
+<p>As a pG4 can be on different transcripts, it can have many location and
+and many biotype. Here, we pass through all pG4 and we find in which
+genes they are, in which transcripts and from what biotype.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>index</strong> (<em>string</em>) – file name of the index file.</li>
+<li><strong>BiotypeByTranscript</strong> (<em>dictionary</em>) – contain all bitoype of all transcripts.</li>
+<li><strong>listeG4InGeneEntire</strong> (<em>dictionary</em>) – contain all gene and for each of them a list of
+all the pG4 they have.</li>
+<li><strong>G4InTranscript</strong> (<em>dictionary</em>) – contains all pG4 (key) and all info about it at the
+transcriptom level.</li>
+<li><strong>G4InGenome</strong> (<em>dictionary</em>) – id of gene with description of G4 and to them correspond
+all location of this G4.</li>
+<li><strong>TranscriptPerG4</strong> (<em>dictionary</em>) – contains all pG4 and their transcripts</li>
+<li><strong>AnnotationTranscript</strong> (<em>dictionary</em>) – information of annotation for all transcripts
+By Ensembl (True if good anotation, else False)</li>
+<li><strong>G4DetectedInGene</strong> (<em>dictionary</em>) – all pG4 with its score and sequence.</li>
+<li><strong>ProteinCoding</strong> (<em>list</em>) – contain all biotype names of protein coding.</li>
+<li><strong>feature</strong> (<em>string</em>) – name of the feature (junction or gene).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">G4InTranscript, G4InGenome and TranscriptPerG4 are updated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionaries</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getLocationFeatureForward">
+<code class="descclassname">G4Annotation.</code><code class="descname">getLocationFeatureForward</code><span class="sig-paren">(</span><em>feature</em>, <em>featureList</em>, <em>startG4</em>, <em>endG4</em>, <em>biotype</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getLocationFeatureForward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the location of a feature on the forward strand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>feature</strong> (<em>string</em>) – name of the feature (gene or junction).</li>
+<li><strong>featureList</strong> (<em>list</em>) – all coords of featured elements for this transcript.</li>
+<li><strong>startG4</strong> (<em>integer</em>) – start of the pG4.</li>
+<li><strong>endG4</strong> (<em>integer</em>) – end of the pG4.</li>
+<li><strong>biotype</strong> (<em>string</em>) – biotype of the transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">location, the location of a pG4.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getLocationFeatureReverse">
+<code class="descclassname">G4Annotation.</code><code class="descname">getLocationFeatureReverse</code><span class="sig-paren">(</span><em>feature</em>, <em>featureList</em>, <em>startG4</em>, <em>endG4</em>, <em>biotype</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getLocationFeatureReverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the location of the feature on the reverse strand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>feature</strong> (<em>string</em>) – name of the feature (gene or junction).</li>
+<li><strong>featureList</strong> (<em>list</em>) – all coords of featured elements.</li>
+<li><strong>startG4</strong> (<em>integer</em>) – start of the pG4.</li>
+<li><strong>endG4</strong> (<em>integer</em>) – end of the pG4.</li>
+<li><strong>biotype</strong> (<em>string</em>) – biotype of the transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">location, the location of the pG4.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getUTRCoordByStrand">
+<code class="descclassname">G4Annotation.</code><code class="descname">getUTRCoordByStrand</code><span class="sig-paren">(</span><em>words</em>, <em>dicoLine</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getUTRCoordByStrand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves coords of UTR depending on the strand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>words</strong> (<em>list</em>) – contain all words of the index file.</li>
+<li><strong>dicoLine</strong> (<em>dictionary</em>) – contain all info on a line (except UTR).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dicoLine, contains all info on a line with UTR.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getlisteG4InGene">
+<code class="descclassname">G4Annotation.</code><code class="descname">getlisteG4InGene</code><span class="sig-paren">(</span><em>G4Detected</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getlisteG4InGene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches all pG4 of a gene.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>G4Detected</strong> (<em>dictionary</em>) – all pG4 with its score and sequence.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">listeG4InGene, for a gene all pG4 in it.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getlocationForward">
+<code class="descclassname">G4Annotation.</code><code class="descname">getlocationForward</code><span class="sig-paren">(</span><em>BiotypeByTranscript</em>, <em>ProteinCoding</em>, <em>transcriptId</em>, <em>coordG4</em>, <em>end5</em>, <em>start3</em>, <em>exonList</em>, <em>intronList</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getlocationForward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the locaion of pG4 region in a transcript on forward strand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BiotypeByTranscript</strong> (<em>dictionary</em>) – contain all bitoype of all transcripts.</li>
+<li><strong>ProteinCoding</strong> (<em>list</em>) – contain all biotype names of protein coding.</li>
+<li><strong>transcriptId</strong> (<em>string</em>) – ensembl id of the transcript.</li>
+<li><strong>coordG4</strong> (<em>list</em>) – coords of the pG4</li>
+<li><strong>end5</strong> (<em>integer</em>) – end of the 3’UTR.</li>
+<li><strong>start3</strong> (<em>integer</em>) – start of the 5’UTR.</li>
+<li><strong>exonList</strong> (<em>list</em>) – all coords of exons for this transcript.</li>
+<li><strong>intronList</strong> (<em>list</em>) – all coords of introns for this transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">location, the location of the pG4.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getlocationG4InJunction">
+<code class="descclassname">G4Annotation.</code><code class="descname">getlocationG4InJunction</code><span class="sig-paren">(</span><em>BiotypeByTranscript</em>, <em>ProteinCoding</em>, <em>transcriptId</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getlocationG4InJunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the location name depending on the biotype.</p>
+<p>If the biotype is one of the codent it will be a CDS, else wise it will be
+ExonNC. This done for a junction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BiotypeByTranscript</strong> (<em>dictionary</em>) – contain biotype of all transcripts.</li>
+<li><strong>ProteinCoding</strong> (<em>list</em>) – contain all type of biotype that correspond to a
+protein coding.</li>
+<li><strong>transcriptId</strong> (<em>string</em>) – id of the transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the name of the junction, depending on the transcript biotype.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getlocationG4InTranscript">
+<code class="descclassname">G4Annotation.</code><code class="descname">getlocationG4InTranscript</code><span class="sig-paren">(</span><em>BiotypeByTranscript</em>, <em>ProteinCoding</em>, <em>transcriptId</em>, <em>coordG4</em>, <em>end5</em>, <em>start3</em>, <em>exonList</em>, <em>intronList</em>, <em>strand</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getlocationG4InTranscript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the location of pG4 region in a transcript.</p>
+<p>Depending on the strand, the location of the pG4 is found.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BiotypeByTranscript</strong> (<em>dictionary</em>) – contain all bitoype of all transcripts.</li>
+<li><strong>ProteinCoding</strong> (<em>list</em>) – contain all biotype names of protein coding.</li>
+<li><strong>transcriptId</strong> (<em>string</em>) – ensembl id of the transcript.</li>
+<li><strong>coordG4</strong> (<em>list</em>) – coords of the pG4</li>
+<li><strong>end5</strong> (<em>integer</em>) – end of the 3’UTR.</li>
+<li><strong>start3</strong> (<em>integer</em>) – start of the 5’UTR.</li>
+<li><strong>exonList</strong> (<em>list</em>) – all coords of exons for this transcript.</li>
+<li><strong>intronList</strong> (<em>list</em>) – all coords of introns for this transcript.</li>
+<li><strong>strand</strong> (<em>string</em>) – strand of the transcipt.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">location, the location of the pG4.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.getlocationReverse">
+<code class="descclassname">G4Annotation.</code><code class="descname">getlocationReverse</code><span class="sig-paren">(</span><em>BiotypeByTranscript</em>, <em>ProteinCoding</em>, <em>transcriptId</em>, <em>coordG4</em>, <em>end5</em>, <em>start3</em>, <em>exonList</em>, <em>intronList</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.getlocationReverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the location of pG4 region in a transcript on reverse strand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>BiotypeByTranscript</strong> (<em>dictionary</em>) – contain all bitoype of all transcripts.</li>
+<li><strong>ProteinCoding</strong> (<em>list</em>) – contain all biotype names of protein coding.</li>
+<li><strong>transcriptId</strong> (<em>string</em>) – ensembl id of the transcript.</li>
+<li><strong>coordG4</strong> (<em>list</em>) – coords of the pG4</li>
+<li><strong>end5</strong> (<em>integer</em>) – end of the 3’UTR.</li>
+<li><strong>start3</strong> (<em>integer</em>) – start of the 5’UTR.</li>
+<li><strong>exonList</strong> (<em>list</em>) – all coords of exons for this transcript.</li>
+<li><strong>intronList</strong> (<em>list</em>) – all coords of introns for this transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">location, the location of the pG4.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.isG4InTranscript">
+<code class="descclassname">G4Annotation.</code><code class="descname">isG4InTranscript</code><span class="sig-paren">(</span><em>strand</em>, <em>coordG4</em>, <em>coordsTranscript</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.isG4InTranscript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches if the pG4 is on the transcript.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>strand</strong> (<em>string</em>) – strand of the transcript and of the pG4.</li>
+<li><strong>coordG4</strong> – start and end of a pG4.</li>
+<li><strong>coordsTranscript</strong> (<em>list</em>) – start and end of a transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">inTranscript, true if the pG4 is on the transcript else false.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.isG4OnJunction">
+<code class="descclassname">G4Annotation.</code><code class="descname">isG4OnJunction</code><span class="sig-paren">(</span><em>startG4</em>, <em>endG4</em>, <em>startBorder</em>, <em>endBorder</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.isG4OnJunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines if the G4 is on a junction.</p>
+<p>This function search if there is an overlap between the pG4 and sequences
+upstream and downstream of an intron. If the pG4 overlaps both, then it is
+on a junction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>startG4</strong> – start of a pG4.</li>
+<li><strong>endG4</strong> (<em>integer</em>) – end of a pG4.</li>
+<li><strong>endBorder</strong> (<em>integer</em>) – end of an intron</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">StartBorder:</th><td class="field-body"><p class="first">start of an intron</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">onJunction, true if the pG4 is on a junction, else false.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.isJuncionInTranscript">
+<code class="descclassname">G4Annotation.</code><code class="descname">isJuncionInTranscript</code><span class="sig-paren">(</span><em>coordG4</em>, <em>intronList</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.isJuncionInTranscript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches if a junction with a pG4 is in a transcript.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>coordG4</strong> (<em>list</em>) – contains start and end of the pG4.</li>
+<li><strong>intronList</strong> (<em>list</em>) – introns contained in this transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">inTranscript, true if the pG4 is on an intron, false other wise.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.main">
+<code class="descclassname">G4Annotation.</code><code class="descname">main</code><span class="sig-paren">(</span><em>path</em>, <em>chromosome</em>, <em>specie</em>, <em>dicoParam</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function.</p>
+<p>The main function contains 4 parts :</p>
+<ul class="simple">
+<li>initialization of all lists and dictionnary containing informations</li>
+<li><dl class="first docutils">
+<dt>merge of all windows over thresholds. If two windows over thresolds</dt>
+<dd>are separated by an other window (under thresholds) between them, it
+be two differents pG4</dd>
+</dl>
+</li>
+<li>annotation of pG4 : on genome and transcriptom</li>
+<li>writing files</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.readLineG4Screener">
+<code class="descclassname">G4Annotation.</code><code class="descname">readLineG4Screener</code><span class="sig-paren">(</span><em>line</em>, <em>StrandByGene</em>, <em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.readLineG4Screener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transcforms a line from the output of G4RNA screener into a dictionary.</p>
+<p>There are many informations in the output of G4RNA screener so
+they will be contains in a dictionary for more readability.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paran line:</th><td class="field-body"><p class="first">one line from the output G4RNA screener.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>StrandByGene</strong> (<em>dictionary</em>) – contain al strand of all genes.</li>
+<li><strong>feature</strong> (<em>string</em>) – name of the feature (gene or junction).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dicoLine, line of G4RNA Screener parsed.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.readLineIndex">
+<code class="descclassname">G4Annotation.</code><code class="descname">readLineIndex</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.readLineIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses and stores infromations from a line of transcript index.</p>
+<p>The transcript index file contains for each transcript, the gene from where
+it came, its coordinates (start, end, chromosome, strand) and also all
+coordinates of intron/exon/UTR.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<em>string</em>) – line from the transcript file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicoLine, contains all informations for each transcript.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.returnG4InGene">
+<code class="descclassname">G4Annotation.</code><code class="descname">returnG4InGene</code><span class="sig-paren">(</span><em>G4DetectedInGene</em>, <em>inputfile</em>, <em>dicoParam</em>, <em>StrandByGene</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.returnG4InGene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges all windows from a gene upper thresholds, it will be predicted G4.</p>
+<p>This function browse all windows returned by G4RNA Screener and
+keep only those over the thresholds. It also merge overlapping
+windows. If two windows upper thresholds are separated with one window
+which is under thresholds, the two windows will not be merge and will be
+concidered as 2 pG4.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G4DetectedInGene</strong> (<em>dictionary</em>) – pG4 with its scores and sequence, predicted in
+genes.</li>
+<li><strong>inputfile</strong> (<em>string</em>) – name of the outputfile of G4RNA screener.</li>
+<li><strong>dicoParam</strong> (<em>dictionary</em>) – all parameters given to G4RNA screener.</li>
+<li><strong>StrandByGene</strong> (<em>dictionary</em>) – strand for each genes.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">G4DetectedInGene, contains all predicted G4 in genes,
+with there scores.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4Annotation.returnG4InJunction">
+<code class="descclassname">G4Annotation.</code><code class="descname">returnG4InJunction</code><span class="sig-paren">(</span><em>G4DetectedInJunction</em>, <em>inputfile</em>, <em>dicoParam</em>, <em>StrandByGene</em><span class="sig-paren">)</span><a class="headerlink" href="#G4Annotation.returnG4InJunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges all windows from junctions upper thresholds, it will be pG4.</p>
+<p>This function browses all windows returned by G4RNA Screener and
+keep only those over the thresholds. It also merge overlapping
+windows. If two windows upper thresholds are separated with one window
+which is under thresholds, the two windows will not be merge and will be
+concidered as 2 pG4.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G4DetectedInJunction</strong> (<em>dictionary</em>) – pG4 with its scores and sequence, those pG4
+are predicted in junctions.</li>
+<li><strong>inputfile</strong> (<em>string</em>) – name of the outputfile of G4RNA screener.</li>
+<li><strong>dicoParam</strong> (<em>dictionary</em>) – all parameters given to G4RNA screener.</li>
+<li><strong>StrandByGene</strong> (<em>dictionary</em>) – strand for each genes.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">G4DetectedInJunction, contains all pG4 in juctions,
+with there scores.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="G4AnnotationCirculaire.html" class="btn btn-neutral float-right" title="G4AnnotationCirculaire" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="countTranscript.html" class="btn btn-neutral float-left" title="countTranscript" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

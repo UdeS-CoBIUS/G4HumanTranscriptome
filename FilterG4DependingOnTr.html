@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FilterG4DependingOnTr &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="G4Annotation" href="G4Annotation.html" />
+    <link rel="prev" title="countTranscript" href="countTranscript.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="README.html" class="icon icon-home"> G4 Prediction in human transcriptom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="computeDensities.html">computeDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FilterG4DependingOnTr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GenerateExonJunctionSequences.html">GenerateExonJunctionSequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generateShuffle.html">generateShuffle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RunBlast.html">RunBlast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlastpG4Q.html">readBlastpG4Q</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="README.html">G4 Prediction in human transcriptom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="README.html">Docs</a> &raquo;</li>
+        
+      <li>FilterG4DependingOnTr</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/FilterG4DependingOnTr.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-FilterG4DependingOnTr">
+<span id="filterg4dependingontr"></span><h1>FilterG4DependingOnTr<a class="headerlink" href="#module-FilterG4DependingOnTr" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Copyright:</dt>
+<dd>Copyright Universite of Sherbrooke, departement of biochemistry and
+departement     of computation.</dd>
+<dt>Date:</dt>
+<dd>September 2019</dd>
+<dt>Description:</dt>
+<dd><blockquote class="first">
+<div>This script filter pG4r and rG4 fasta files, depending on their comon</div></blockquote>
+<p class="last">transcript ID. pG4 found in non mRNA transcripts, or on location that do not
+exist on mRNA are removed.</p>
+</dd>
+<dt>Usage:</dt>
+<dd>python ~/PATH/FilterG4DependingOnTr.py</dd>
+</dl>
+<dl class="function">
+<dt id="FilterG4DependingOnTr.getIdTr">
+<code class="descclassname">FilterG4DependingOnTr.</code><code class="descname">getIdTr</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#FilterG4DependingOnTr.getIdTr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a dictionary of Tr id correspondance.</p>
+<p>This function aims to create a dictionary that make correrspondance between
+Ensembl id and refseq id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> – name of the file with transcript id correspondance.
+:type filename: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">IdDico, contains correrspondance between Ensembl id and refseq id.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="FilterG4DependingOnTr.importRG4seq">
+<code class="descclassname">FilterG4DependingOnTr.</code><code class="descname">importRG4seq</code><span class="sig-paren">(</span><em>filename</em>, <em>IdDico</em><span class="sig-paren">)</span><a class="headerlink" href="#FilterG4DependingOnTr.importRG4seq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports K+ rG4 dataset.</p>
+<p>This function aims to import rG4 in a dictionary. It also creates a list of
+transcript with rG4. rG4 are filtered depending on their sequences, if a
+minimal motif G(2+)X(+)G(2+)X(+)G(2+)X(+)G(2+) is not found then we don’t
+keep the rG4. It also prints a dictionary with the number of rG4
+by locations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> – name of the file with rG4.
+:type filename: string</li>
+<li><strong>IdDico</strong> – correspondance between ensembl and refseq ids.
+:type IdDico: dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">rG4Filtered, listTrrG4</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary and list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="FilterG4DependingOnTr.importRG4seqPDS">
+<code class="descclassname">FilterG4DependingOnTr.</code><code class="descname">importRG4seqPDS</code><span class="sig-paren">(</span><em>filename</em>, <em>IdDico</em><span class="sig-paren">)</span><a class="headerlink" href="#FilterG4DependingOnTr.importRG4seqPDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports K+PDS rG4 dataset.</p>
+<p>This function aims to import rG4 in a dictionary. It also creates a list of
+transcript with rG4. rG4 are filtered depending on their sequences, if a
+minimal motif G(2+)X(+)G(2+)X(+)G(2+)X(+)G(2+) is not found then we don’t
+keep the rG4. It also prints a dictionary with the number of rG4
+by locations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> – name of the file with rG4.
+:type filename: string</li>
+<li><strong>IdDico</strong> – correspondance between ensembl and refseq ids.
+:type IdDico: dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">rG4Filtered, listTrrG4</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary and list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="FilterG4DependingOnTr.importpG4seq">
+<code class="descclassname">FilterG4DependingOnTr.</code><code class="descname">importpG4seq</code><span class="sig-paren">(</span><em>filename</em>, <em>IdDico</em>, <em>listTrrG4</em><span class="sig-paren">)</span><a class="headerlink" href="#FilterG4DependingOnTr.importpG4seq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports pG4r dataset.</p>
+<p>This function aims to import pG4r in a dictionary. pG4r in introns are
+removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> – name of the file with rG4.
+:type filename: string</li>
+<li><strong>IdDico</strong> – correspondance between ensembl and refseq ids.
+:type IdDico: dictionary</li>
+<li><strong>listTrrG4</strong> – list of transcripts with rG4.
+:type listTrrG4: list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pG4Filtered</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="FilterG4DependingOnTr.writeFasta">
+<code class="descclassname">FilterG4DependingOnTr.</code><code class="descname">writeFasta</code><span class="sig-paren">(</span><em>outFN</em>, <em>dicoFasta</em><span class="sig-paren">)</span><a class="headerlink" href="#FilterG4DependingOnTr.writeFasta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a fasta file from a dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>outFN</strong> – FileName of the output.
+:type outFN: string</li>
+<li><strong>dicoFasta</strong> – sequences id and sequences.
+:type dicoFasta: dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pG4Filtered</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="G4Annotation.html" class="btn btn-neutral float-right" title="G4Annotation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="countTranscript.html" class="btn btn-neutral float-left" title="countTranscript" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

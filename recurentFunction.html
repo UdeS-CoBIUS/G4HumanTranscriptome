@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>recurentFunction &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="readRandom" href="readRandom.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="README.html" class="icon icon-home"> G4 Prediction in human transcriptom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">recurentFunction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="README.html">G4 Prediction in human transcriptom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="README.html">Docs</a> &raquo;</li>
+        
+      <li>recurentFunction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/recurentFunction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-recurentFunction">
+<span id="recurentfunction"></span><h1>recurentFunction<a class="headerlink" href="#module-recurentFunction" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Copyright:</dt>
+<dd>Copyright Universite of Sherbrooke, departement of biochemistry and
+departement     of computation.</dd>
+<dt>Date:</dt>
+<dd>March 2019</dd>
+<dt>Description:</dt>
+<dd><dl class="first last docutils">
+<dt>This file is more like a librairy than a script. It contains all function</dt>
+<dd>that are used in 2 or more scripts. This allow to avoid redundance in
+other code.</dd>
+</dl>
+</dd>
+</dl>
+<dl class="function">
+<dt id="recurentFunction.GetAnnotationTranscript">
+<code class="descclassname">recurentFunction.</code><code class="descname">GetAnnotationTranscript</code><span class="sig-paren">(</span><em>filename</em>, <em>Coding</em>, <em>BiotypeByTranscript</em><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.GetAnnotationTranscript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionnary with the annotation quality of transcripts.</p>
+<p>In Ensembl, there is some transcripts with bad annotation. The ones we can
+checked are if a non coding transcripts have an UTR, which chould not exist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<em>string</em>) – name of the file which contains information for each
+transcript.</li>
+<li><strong>Coding</strong> (<em>list</em>) – contains all subclasses of coding transcripts.</li>
+<li><strong>BiotypeByTranscript</strong> (<em>dictionary</em>) – contains all transcripts and their biotypes.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">AnnotationTranscript, contains all transcripts and if their
+annotation is good.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.GetLengthFraction">
+<code class="descclassname">recurentFunction.</code><code class="descname">GetLengthFraction</code><span class="sig-paren">(</span><em>positionA</em>, <em>positionB</em><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.GetLengthFraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the length of a region.</p>
+<p>This fonction defines the lenght between two positions
+(positionA and positionB). It doesn’t matter the order of position
+(positionA can be &gt; positionB).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>positionA</strong> (<em>string</em>) – first coordinate.</li>
+<li><strong>positionB</strong> (<em>string</em>) – scond coordinates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">length, length of the region delimited by positionA and positionB.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">integer</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.addTypeTr">
+<code class="descclassname">recurentFunction.</code><code class="descname">addTypeTr</code><span class="sig-paren">(</span><em>biotype</em><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.addTypeTr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply function to retrieve the type of a transcript depending on biotype.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>biotype</strong> (<em>string</em>) – biotype of a transcript.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">type, coding or non coding.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.addWindowToG4Seq">
+<code class="descclassname">recurentFunction.</code><code class="descname">addWindowToG4Seq</code><span class="sig-paren">(</span><em>g4Seq</em>, <em>windowSeq</em>, <em>step</em>, <em>windowLength</em><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.addWindowToG4Seq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a wwindow’s sequence to the sequence of a pG4.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>g4Seq</strong> (<em>string</em>) – sequence of a pG4.</li>
+<li><strong>windowSeq</strong> (<em>string</em>) – sequence of the window.</li>
+<li><strong>step</strong> (<em>integer</em>) – step between two windows (parameter of G4RNA screener).</li>
+<li><strong>windowLength</strong> (<em>integer</em>) – length of windows (parameter of G4RNA screener).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">g4Seq, merge between the window and the old pG4.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.changeStrandFormat">
+<code class="descclassname">recurentFunction.</code><code class="descname">changeStrandFormat</code><span class="sig-paren">(</span><em>strand</em><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.changeStrandFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes the format of the strand from +/- to 1/-1.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.createDicoFamily">
+<code class="descclassname">recurentFunction.</code><code class="descname">createDicoFamily</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.createDicoFamily" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionnary with all classes and subclasses of transcripts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dicoFam, contains all classes and subclasses.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.createDicoFamilyFiltered">
+<code class="descclassname">recurentFunction.</code><code class="descname">createDicoFamilyFiltered</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.createDicoFamilyFiltered" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionnary with all classes and subclasses of transcripts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dicoFam, contains all classes and subclasses.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.createDicoParam">
+<code class="descclassname">recurentFunction.</code><code class="descname">createDicoParam</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.createDicoParam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary containing all parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>arg</strong> (<em>arg</em>) – contains all parameters from G4RNA screener and the length
+of junctions.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicoParam, contains all parameters from G4RNA screener
+and the length of junctions</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.createDictionaryBiotypeByTranscript">
+<code class="descclassname">recurentFunction.</code><code class="descname">createDictionaryBiotypeByTranscript</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.createDictionaryBiotypeByTranscript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates dictionary with transcripts subclasses.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>string</em>) – name of file which contains the liste of biotype for each
+transcript of this chromosome.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dico, contains transcripts and their subclasses.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.createIdG4">
+<code class="descclassname">recurentFunction.</code><code class="descname">createIdG4</code><span class="sig-paren">(</span><em>gene</em>, <em>startG4</em>, <em>endG4</em>, <em>strand</em><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.createIdG4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the id of a pG4.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>gene</strong> (<em>string</em>) – id of a gene.</li>
+<li><strong>startG4</strong> (<em>integer</em>) – start of the pG4.</li>
+<li><strong>endG4</strong> – end of the pG4.</li>
+<li><strong>strand</strong> (<em>string</em>) – strand of the pG4 and of the gene.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the id of the pG4</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="recurentFunction.createIdpG4rShuffle">
+<code class="descclassname">recurentFunction.</code><code class="descname">createIdpG4rShuffle</code><span class="sig-paren">(</span><em>gene</em>, <em>startG4</em>, <em>endG4</em>, <em>strand</em><span class="sig-paren">)</span><a class="headerlink" href="#recurentFunction.createIdpG4rShuffle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the id of a pG4.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>gene</strong> (<em>string</em>) – id of a gene.</li>
+<li><strong>startG4</strong> (<em>integer</em>) – start of the pG4.</li>
+<li><strong>endG4</strong> – end of the pG4.</li>
+<li><strong>strand</strong> (<em>string</em>) – strand of the pG4 and of the gene.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the id of the pG4</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="readRandom.html" class="btn btn-neutral float-left" title="readRandom" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

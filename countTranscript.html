@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>countTranscript &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="G4Annotation" href="G4Annotation.html" />
+    <link rel="prev" title="countLocation" href="countLocation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="README.html" class="icon icon-home"> G4 Prediction in human transcriptom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">countTranscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="README.html">G4 Prediction in human transcriptom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="README.html">Docs</a> &raquo;</li>
+        
+      <li>countTranscript</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/countTranscript.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-countTranscript">
+<span id="counttranscript"></span><h1>countTranscript<a class="headerlink" href="#module-countTranscript" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Copyright:</dt>
+<dd>Copyright Universite of Sherbrooke, departement of biochemistry and
+departement     of computation.</dd>
+<dt>Date:</dt>
+<dd>August 2019</dd>
+<dt>Description:</dt>
+<dd><blockquote class="first">
+<div>This file is more like a library called when statistics are computed (</div></blockquote>
+<p class="last">getMainDensities and getDataFig). Its aims is to compute the number of
+transcript with at least one pG4r in it. A special script is made for
+because we need to compute each time, otherwise we could get the same
+transcript in different condition and count it 2 times.</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="countTranscript.countpG4rByBt">
+<code class="descclassname">countTranscript.</code><code class="descname">countpG4rByBt</code><span class="sig-paren">(</span><em>dicoTrBt</em>, <em>listTrpG4r</em><span class="sig-paren">)</span><a class="headerlink" href="#countTranscript.countpG4rByBt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counts the number of transcripts with pG4r for each transcript subclass.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dicoTrBt</strong> – dictionary with transcipt and their subclass {idTr : subclass}.
+:type dicoTrBt: dictionary</li>
+<li><strong>listTrpG4r</strong> – contains all uniq tr id that have at least one pG4r.
+:type listTrpG4r: list</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countTranscript.countpG4rByClass">
+<code class="descclassname">countTranscript.</code><code class="descname">countpG4rByClass</code><span class="sig-paren">(</span><em>dicoTrClass</em>, <em>listTrpG4r</em><span class="sig-paren">)</span><a class="headerlink" href="#countTranscript.countpG4rByClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counts the number of transcripts with pG4r for each transcript class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dicoTrClass</strong> – dictionary with transcipt and their class {idTr : class}.
+:type dicoTrClass: dictionary</li>
+<li><strong>listTrpG4r</strong> – contains all uniq tr id that have at least one pG4r.
+:type listTrpG4r: list</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countTranscript.getNumberTrinBt">
+<code class="descclassname">countTranscript.</code><code class="descname">getNumberTrinBt</code><span class="sig-paren">(</span><em>dicoBt</em>, <em>listTr</em><span class="sig-paren">)</span><a class="headerlink" href="#countTranscript.getNumberTrinBt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of transcripts in all subclasses.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dicoBt</strong> – contains all transcript and their biotype {idTr : biotype}.
+:type dicoBt: dictionary</li>
+<li><strong>listTr</strong> – contains all uniq transcripts id, that have a biotype in the
+human transcriptome.
+:type listTr: list</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countTranscript.getNumberTrinClass">
+<code class="descclassname">countTranscript.</code><code class="descname">getNumberTrinClass</code><span class="sig-paren">(</span><em>dicoBt</em>, <em>listTr</em><span class="sig-paren">)</span><a class="headerlink" href="#countTranscript.getNumberTrinClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of transcripts in all classes.</p>
+<p>This function aims to first print the number of transcripts in all classes,
+and second to return a dictionary containing all transcript and their class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dicoBt</strong> – contains all transcript and their biotype {idTr : biotype}.
+:type dicoBt: dictionary</li>
+<li><strong>listTr</strong> – contains all uniq transcripts id, that have a biotype in the
+human transcriptome.
+:type listTr: list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dicoTrClass, dictionary with transcipt and their class {idTr : class}.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countTranscript.importTr">
+<code class="descclassname">countTranscript.</code><code class="descname">importTr</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#countTranscript.importTr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports in a list, all transcripts id. IDs are uniq.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> – name of the file containing all transcripts.
+:type filename: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">listTr, a list of uniq transcripts id.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countTranscript.readShufpG4r">
+<code class="descclassname">countTranscript.</code><code class="descname">readShufpG4r</code><span class="sig-paren">(</span><em>pG4rFile</em><span class="sig-paren">)</span><a class="headerlink" href="#countTranscript.readShufpG4r" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a file containing all pG4r Shuf and get their transcripts.</p>
+<p>This function aims to retrieve transcript id of those that have a G4
+predicted in them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> – name of the file containing all shuf pG4r.
+:type filename: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">listTr, contains all uniq tr id that have at least one pG4r.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countTranscript.readWtpG4r">
+<code class="descclassname">countTranscript.</code><code class="descname">readWtpG4r</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#countTranscript.readWtpG4r" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a file containing all pG4r WT and get their transcripts.</p>
+<p>This function aims to retrieve transcript id of those that have a G4
+predicted in them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> – name of the file containing all wt pG4r.
+:type filename: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">listTr, contains all uniq tr id that have at least one pG4r.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="G4Annotation.html" class="btn btn-neutral float-right" title="G4Annotation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="countLocation.html" class="btn btn-neutral float-left" title="countLocation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

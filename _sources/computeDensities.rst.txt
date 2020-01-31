@@ -1,0 +1,5 @@
+computeDensities
+================
+
+.. automodule:: computeDensities
+  :members:

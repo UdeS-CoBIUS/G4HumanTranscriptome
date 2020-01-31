@@ -1,0 +1,5 @@
+G4AnnotationPIRNA
+=================
+
+.. automodule:: G4AnnotationPIRNA
+  :members:

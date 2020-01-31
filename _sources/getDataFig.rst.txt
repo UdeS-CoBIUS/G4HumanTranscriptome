@@ -1,0 +1,5 @@
+getDataFig
+==========
+
+.. automodule:: getDataFig
+  :members:

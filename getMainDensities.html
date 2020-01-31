@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>getMainDensities &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="readBlas" href="readBlast.html" />
+    <link rel="prev" title="getDataFig" href="getDataFig.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="README.html" class="icon icon-home"> G4 Prediction in human transcriptom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="README.html">G4 Prediction in human transcriptom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="README.html">Docs</a> &raquo;</li>
+        
+      <li>getMainDensities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/getMainDensities.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-getMainDensities">
+<span id="getmaindensities"></span><h1>getMainDensities<a class="headerlink" href="#module-getMainDensities" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Copyright:</dt>
+<dd>Copyright Universite of Sherbrooke, departement of biochemistry and
+departement     of computation.</dd>
+<dt>Date:</dt>
+<dd>September 2019</dd>
+<dt>Description:</dt>
+<dd>This script will read results files from Wt and shuffled data set and
+compute all densities at a location by subclass level. The output of
+this script is a tsv file with all statistic computed : densities,
+percent of location with at least one pG4r, content of each nucleotide,
+GC content.</dd>
+<dt>Command Line:</dt>
+<dd>For one chr : python ~/PATH/getMainDensities.py</dd>
+</dl>
+<dl class="function">
+<dt id="getMainDensities.addNbLocation">
+<code class="descclassname">getMainDensities.</code><code class="descname">addNbLocation</code><span class="sig-paren">(</span><em>path</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.addNbLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the number of locations with at least one pG4r in it.</p>
+<p>First all number are retrieved : number tot of location by biotype, number
+of location with at least one pG4r for each dataset. Then they are mapped
+to the dataFrame with nucleotides content and the number of pG4r.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> – path to all needed file.
+:type path: string</li>
+<li><strong>df</strong> – contains nucleotides content, number of pG4r and number of
+number transcripts.
+:type df: dataFrame</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">df, updated with the numbers of location with or without pG4r for
+each dataset.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.addNbpG4r">
+<code class="descclassname">getMainDensities.</code><code class="descname">addNbpG4r</code><span class="sig-paren">(</span><em>dico</em>, <em>df</em>, <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.addNbpG4r" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds pG4r number for one dataset.</p>
+<p>The input dataFrame is browsed, and pG4r number and transcript number are
+added one by one for each biotype location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dico</strong> – contains the pG4r number for one dataset.
+:type dico: dictionary</li>
+<li><strong>df</strong> – contains all biotype locations and their nucleotides content.
+:type df: dataFrame</li>
+<li><strong>type</strong> – type of the dataset (Wt or shuffled).
+:type type: string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">df, updated with the number of pG4r for one dataset.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.addType">
+<code class="descclassname">getMainDensities.</code><code class="descname">addType</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.addType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the location type, made for an apply.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>location</strong> – <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">type location:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">type of the location.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.addTypeTr">
+<code class="descclassname">getMainDensities.</code><code class="descname">addTypeTr</code><span class="sig-paren">(</span><em>biotype</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.addTypeTr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply function to retrieve the type of a transcript depending on biotype.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>biotype</strong> (<em>string</em>) – biotype of a transcript.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">type, coding or non coding.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.addpG4rNumber">
+<code class="descclassname">getMainDensities.</code><code class="descname">addpG4rNumber</code><span class="sig-paren">(</span><em>pG4rFileShuf</em>, <em>pG4rFileWt</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.addpG4rNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds to the input dataFrame the number of pG4r for the wt and shuffles DS.</p>
+<p>First import information about pG4r (parsed file of the G4RNA screener
+ouput file). Then, those information are added by calling addNbpG4r for
+each dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pG4rFileShuf</strong> – pG4r Shuffled filename.
+:type pG4rFileShuf: string</li>
+<li><strong>pG4rFileWt</strong> – pG4r Wt filename.
+:type pG4rFileWt: string</li>
+<li><strong>df</strong> – contains all biotype locations and their nucleotides content.
+:type df: dataFrame</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">df, updated with the number of pG4r for each data set.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.changeLocName">
+<code class="descclassname">getMainDensities.</code><code class="descname">changeLocName</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.changeLocName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes names of locations.</p>
+<p>This function aims to unified names location between the shuffled dataset
+and the wildtype dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>location</strong> – wt name location.
+:type location: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">location, updated with the ‘good’ name.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.computeDensities">
+<code class="descclassname">getMainDensities.</code><code class="descname">computeDensities</code><span class="sig-paren">(</span><em>df</em>, <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.computeDensities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes pG4r densities.</p>
+<p>Browses the input dataFrame, and for each row computes the pG4r density.
+If the row is a segment location it is : numberOfpG4r / lengthTot * 1000,
+and if it is a point location : numberOfpG4r / numberTotOfLocation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>df</strong> – contains nucleotides content, number of pG4r and number of
+number transcripts and number of locations.
+:type df: dataFrame</li>
+<li><strong>type</strong> – name of the dataset (Wt or Shuf)
+:type type:string</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:returns:df, updated with densities.
+:rtype: dataFrame</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.getDicoNbpG4rShuf">
+<code class="descclassname">getMainDensities.</code><code class="descname">getDicoNbpG4rShuf</code><span class="sig-paren">(</span><em>pG4rFile</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.getDicoNbpG4rShuf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import from a file the pG4r number and the number of transcript with it.</p>
+<p>This function is made for the shuffled dataset.
+This function aims to import into a dictionary the number of pG4r for each
+biotype locations, but also the number of transcript with at least one pG4r.
+To do that, we check each row of the file and then add to the dictionary
+this pG4r ( +1 for the number of pG4r and +Id for the number of transcript).
+For the nmber of transcript the list with all ID is make unique and then its
+length gave the number of transcript with at least one pG4r.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pG4rFile</strong> – pG4r filename for the shuffled dataset.
+:type pG4rFile: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicopG4r, {NbG4 : {LocID : nbpG4r}, nbTrWithpG4 : {LocID : nbTr}}.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.getDicoNbpG4rWt">
+<code class="descclassname">getMainDensities.</code><code class="descname">getDicoNbpG4rWt</code><span class="sig-paren">(</span><em>pG4rFile</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.getDicoNbpG4rWt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import from a file the pG4r number and the number of transcript with it.</p>
+<p>This function is made for the Wt dataset. Exon location are added because
+they are not explicit (5UTR + CDS + 3UTR + codons). Also, location names
+are changed to get the one used in the analysis.
+This function aims to import into a dictionary the number of pG4r for each
+biotype locations, but also the number of transcript with at least one pG4r.
+To do that, we check each row of the file and then add to the dictionary
+this pG4r ( +1 for the number of pG4r and +Id for the number of transcript).
+For the nmber of transcript the list with all ID is make unique and then its
+length gave the number of transcript with at least one pG4r.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pG4rFile</strong> – pG4r filename for the Wt dataset.
+:type pG4rFile: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicopG4r, {NbG4 : {LocID : nbpG4r}, nbTrWithpG4 : {LocID : nbTr}}.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.getGCFromFile">
+<code class="descclassname">getMainDensities.</code><code class="descname">getGCFromFile</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.getGCFromFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates from scratch a data frame with all nucleotides count for each Bt.</p>
+<p>Creates an empty data frame and fill it after reader each fasta shuffled
+file. The data frame contains one columns for each nucleotides.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – path to all file needed.
+:type path: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">df, containing all nucleotides count for each subclasses locations.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.importData">
+<code class="descclassname">getMainDensities.</code><code class="descname">importData</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.importData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates from scratch a data frame with all nucleotides count for each Bt location.</p>
+<p>Creates an empty data frame and fill it by counting, for each location in
+the inputfile, the number of nucleotides.
+The input file contains all fasta sequences of all locations possible for
+one chromosome. For each locations, transcripts and biotypes are given in
+the id. This allows to get one row for each biotype locations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> – fasta file of all possible locatinos for one chromosome.
+:type filename: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">df, contains all biotype locations for one chromosome with their
+nulceotides content.Biotypes location are not yet unique.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.main">
+<code class="descclassname">getMainDensities.</code><code class="descname">main</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to obtain all location-subclasses densities.</p>
+<p>First a dataframe with all nucleotides count for each sublclasses is created.
+The the pG4r is added for Wt and shuffled data set. Then, we add the
+number of unique location that contain at least one pG4r. Finally, densities
+are computed.
+This function return nothing but create a file : TotDataDensities.csv.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – path to all file needed.
+:type path: string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="getMainDensities.sumNt">
+<code class="descclassname">getMainDensities.</code><code class="descname">sumNt</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#getMainDensities.sumNt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sums all nucleotides content to get one row for each biotype location.</p>
+<p>The input dataFrame does not possess unique biotype location. To make them
+unique, all row of the same biotype location are summed together.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>df</strong> – contains all non unique biotype locations with there nucleotides
+content.
+:type df: dataFrame</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">df, with unique row for eahc biotype locaions.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="readBlast.html" class="btn btn-neutral float-right" title="readBlas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getDataFig.html" class="btn btn-neutral float-left" title="getDataFig" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

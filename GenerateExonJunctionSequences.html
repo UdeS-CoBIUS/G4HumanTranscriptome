@@ -1,0 +1,530 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GenerateExonJunctionSequences &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="README.html" class="icon icon-home"> G4 Prediction in human transcriptom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="README.html">G4 Prediction in human transcriptom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="README.html">Docs</a> &raquo;</li>
+        
+      <li>GenerateExonJunctionSequences</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/GenerateExonJunctionSequences.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-GenerateExonJunctionSequences">
+<span id="generateexonjunctionsequences"></span><h1>GenerateExonJunctionSequences<a class="headerlink" href="#module-GenerateExonJunctionSequences" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Copyright:</dt>
+<dd>Copyright Universite of Sherbrooke, departement of biochemistry and
+departement     of computation.</dd>
+<dt>Contact:</dt>
+<dd><a class="reference external" href="mailto:sarah&#46;belhamiti&#37;&#52;&#48;usherbrooke&#46;ca">sarah<span>&#46;</span>belhamiti<span>&#64;</span>usherbrooke<span>&#46;</span>ca</a></dd>
+<dt>Date:</dt>
+<dd>December 2017</dd>
+<dt>Description:</dt>
+<dd>This script aims to compute coordinates of introns and to create junctions
+sequences. Junctions corrsponds to the 100 upstreams nucleotides of an
+intron and to the 100 dowstream nucleotides of the same introns.</dd>
+</dl>
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.AddIntron">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">AddIntron</code><span class="sig-paren">(</span><em>intron_total</em>, <em>Intron</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.AddIntron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds new introns in genes intron.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>intron_total</strong> (<em>list</em>) – all introns from a transcript.</li>
+<li><strong>Intron</strong> (<em>list</em>) – all intron from transcriptome.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Intron, updated with new introns.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.AddTranscriptPerIntron">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">AddTranscriptPerIntron</code><span class="sig-paren">(</span><em>intron_total</em>, <em>Dico</em>, <em>transcriptID</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.AddTranscriptPerIntron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary with all introns and their transcript ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>intron_total</strong> (<em>list</em>) – all introns from a transcript.</li>
+<li><strong>Dico</strong> (<em>dictionary</em>) – contiains for each intron, the transcript it’s belong.</li>
+<li><strong>transcriptID</strong> (<em>string</em>) – Ensembl transcript ID.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dico, with new introns.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.CreateEndIntron">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">CreateEndIntron</code><span class="sig-paren">(</span><em>exon_total</em>, <em>rank</em>, <em>strand</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.CreateEndIntron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes all introns ends for a transcript.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>exon_total</strong> (<em>list</em>) – all start and end of each exon from a transcript.</li>
+<li><strong>rank</strong> (<em>list</em>) – contain all exon ranks from a transcript.</li>
+<li><strong>strand</strong> (<em>string</em>) – strand of the transcript, can be 1 for forward and -1 for
+reverse.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">end_intron, all introns ends from a transcript.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.CreateIndex">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">CreateIndex</code><span class="sig-paren">(</span><em>directory</em>, <em>inputfilename</em>, <em>InfoPerGeneAndTranscript</em>, <em>ExonPerTranscript</em>, <em>IntronPerTranscript</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.CreateIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes output with all transcripts informations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>directory</strong> (<em>string</em>) – name of the directorycontaining the file.</li>
+<li><strong>inputfilename</strong> (<em>string</em>) – name of the file containing transcripts informations.</li>
+<li><strong>InfoPerGeneAndTranscript</strong> (<em>dictionary</em>) – contains all genes and transcripts info.</li>
+<li><strong>ExonPerTranscript</strong> (<em>dictionary</em>) – contains all transcripts and their exons.</li>
+<li><strong>IntronPerTranscript</strong> (<em>dictionary</em>) – contains all transcripts and all its introns.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.CreateSequence">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">CreateSequence</code><span class="sig-paren">(</span><em>dirFasta</em>, <em>dirData</em>, <em>inputfilename</em>, <em>IntronPerGene</em>, <em>InfoPerGene</em>, <em>extension</em>, <em>chromosome</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.CreateSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes output with all junction sequences.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>directory</strong> (<em>string</em>) – name of the directory containing the file.</li>
+<li><strong>inputfilename</strong> (<em>string</em>) – name of the file containing transcripts informations.</li>
+<li><strong>IntronPerGene</strong> (<em>dictionary</em>) – contains all genes and all its introns.</li>
+<li><strong>InfoPerGene</strong> (<em>dictionary</em>) – contains informations of genes.</li>
+<li><strong>extension</strong> (<em>integer</em>) – length of the upstream sequence and dowstream sequence we
+retrieve.</li>
+<li><strong>chromosome</strong> (<em>string</em>) – current chromosome.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.CreateStartIntron">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">CreateStartIntron</code><span class="sig-paren">(</span><em>exon_total</em>, <em>strand</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.CreateStartIntron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes all introns starts for a transcript.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>exon_total</strong> (<em>list</em>) – all start and end of each exon from a transcript.</li>
+<li><strong>strand</strong> (<em>string</em>) – strand of the transcript, can be 1 for forward and -1 for
+reverse.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">start_intron, all introns starts from a transcript.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.ExonTotal">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">ExonTotal</code><span class="sig-paren">(</span><em>rank</em>, <em>strand</em>, <em>start_exon</em>, <em>end_exon</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.ExonTotal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves from one transcript all its exons.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rank</strong> (<em>integer</em>) – number of exon.</li>
+<li><strong>strand</strong> (<em>string</em>) – strand of the transcript, can be 1 for forward and -1 for
+reverse.</li>
+<li><strong>start_exon</strong> (<em>integer</em>) – all exon start for a transcript.</li>
+<li><strong>end_exon</strong> (<em>integer</em>) – all exon end for a transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">exon_total, array of array with start and end of each exon.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.Fasta">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">Fasta</code><span class="sig-paren">(</span><em>chrSequence</em>, <em>start</em>, <em>end</em>, <em>strand</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.Fasta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a gene fasta sequence from Ensembl.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>geneID</strong> (<em>string</em>) – Ensembl Id of a gene.</li>
+<li><strong>chromosome</strong> (<em>string</em>) – name of the gene chromosome</li>
+<li><strong>start</strong> (<em>integer</em>) – start of the gene.</li>
+<li><strong>end</strong> (<em>integer</em>) – end of the gene.</li>
+<li><strong>strand</strong> (<em>string</em>) – strand of the gene.</li>
+<li><strong>specie</strong> (<em>string</em>) – name of the specie.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DNA sequence of the gene.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.IntronTotal">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">IntronTotal</code><span class="sig-paren">(</span><em>start_intron</em>, <em>end_intron</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.IntronTotal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all introns coordinates from a transcript.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start_intron</strong> (<em>list</em>) – all introns starts from a transcript.</li>
+<li><strong>end_intron</strong> (<em>list</em>) – all introns ends from a transcript.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">intron_total, all start and end of each intron from a transcript.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.OrderInformationBiomart">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">OrderInformationBiomart</code><span class="sig-paren">(</span><em>directory</em>, <em>inputfilename</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.OrderInformationBiomart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates one line per transcript with all feature in it.</p>
+<p>Here we read the file containing informations about transcripts and parse
+it. In the input file have informations about exons, UTR, chromosomes,
+strand and biotype. One line contains informations about one enxon. UTR are
+given on the first exon (5UTR) and on the last exon (3UTR). Introns coord
+are computated and added to the others. Then all informations are regrouped
+to fit in one line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>directory</strong> (<em>string</em>) – name of the directorycontaining the file.</li>
+<li><strong>inputfilename</strong> (<em>string</em>) – name of the file containing transcripts informations.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">InformationPerGeneAndTranscript, corresponds to one line of the
+output.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.importFastaChromosome">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">importFastaChromosome</code><span class="sig-paren">(</span><em>directory</em>, <em>chr</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.importFastaChromosome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import the fasta file containing an entire chromosome sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>directory</strong> (<em>string</em>) – directory name containing all chromosome fasta.</li>
+<li><strong>chr</strong> (<em>string</em>) – chromosome wanted.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">sequence, entire chromosome sequence.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.readLineTranscriptInfo">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">readLineTranscriptInfo</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.readLineTranscriptInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a line from the file containing infromations about transcripts.</p>
+<p>This file is downloaded from Ensembl via biomart. The human assembly is
+GRCh38p12.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>l</strong> (<em>string</em>) – line from the transcript file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicoL, contains all info of the line but parsed.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="GenerateExonJunctionSequences.reverseSequence">
+<code class="descclassname">GenerateExonJunctionSequences.</code><code class="descname">reverseSequence</code><span class="sig-paren">(</span><em>Sequence</em><span class="sig-paren">)</span><a class="headerlink" href="#GenerateExonJunctionSequences.reverseSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse complement a DNA sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Sequence</strong> (<em>string</em>) – DNA sequence that will be reversed.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Sequence, the initial DNA sequence but reverse complemented.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>countLocation &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="countTranscript" href="countTranscript.html" />
+    <link rel="prev" title="Welcome to G4Conserve’s documentation!" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="README.html" class="icon icon-home"> G4 Prediction in human transcriptom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="README.html">G4 Prediction in human transcriptom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="README.html">Docs</a> &raquo;</li>
+        
+      <li>countLocation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/countLocation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-countLocation">
+<span id="countlocation"></span><h1>countLocation<a class="headerlink" href="#module-countLocation" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Copyright:</dt>
+<dd>Copyright Universite of Sherbrooke, departement of biochemistry and
+departement     of computation.</dd>
+<dt>Date:</dt>
+<dd>August 2019</dd>
+<dt>Description:</dt>
+<dd>This file is more like a library called when statistics are computed (
+getMainDensities and getDataFig). Its aims is to compute the number of
+location with at least one pG4r in it. A special script is made for
+because we need to compute each time, otherwise we could get the same
+location in different condition and count it 2 times.</dd>
+</dl>
+<dl class="function">
+<dt id="countLocation.countLocId">
+<code class="descclassname">countLocation.</code><code class="descname">countLocId</code><span class="sig-paren">(</span><em>dicoLocId</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.countLocId" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of location from a dictionary {loc-Bt : [locID]}</p>
+<p>This function just browse the input dictionary and for each key (loc-Bt),
+make the list unique and its length is the number of locations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dicoLocId</strong> – {Location-Biotype : [locId]}
+:type dicoLocId: dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.countLocIdByClass">
+<code class="descclassname">countLocation.</code><code class="descname">countLocIdByClass</code><span class="sig-paren">(</span><em>dicoLocId</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.countLocIdByClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of location by class from biotype.</p>
+<p>The dictionary with all locId is parser to another one where keys are
+changed from the biotype level to the class level (coding, long ncRNA, short
+ncRNA, and pseudogene).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dicoLocId</strong> – biotype level of location list
+:type dicoLocId: dictionary</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicoLoca, class level.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.getAllLocNum">
+<code class="descclassname">countLocation.</code><code class="descname">getAllLocNum</code><span class="sig-paren">(</span><em>path</em>, <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.getAllLocNum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary with the number of location.</p>
+<p>Same as getAllLocNumMulti but this time location are not linked to
+transcripts. First data are imported into a dictionary
+{Location-Biotype : [Location-Tr]}. Then, depending on if we want the
+result at the class or biotype level, the list of location is made
+unique and its length give the number of location.
+This result is also store in a dictionary {LevelLocation : numberOfLocation}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> – main folder path with all needed file in it.
+:type path: string</li>
+<li><strong>type</strong> – level (class or biotype/subclass)
+:type type: string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dicoNbTot, {LevelLocation : numberOfLocation}</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.getAllLocNumMulti">
+<code class="descclassname">countLocation.</code><code class="descname">getAllLocNumMulti</code><span class="sig-paren">(</span><em>path</em>, <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.getAllLocNumMulti" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary with the number of location.</p>
+<p>pG4r are affiliated to a chromosomal location and a transcript. So here we
+count the number tot of location according to transcripts. First data are
+imported into a dictionary {Location-Biotype : [Location-Tr]}. Then,
+depending on if we want the result at the class or biotype level, the
+list of location is made unique and its length give the number of location.
+This result is also store in a dictionary {LevelLocation : numberOfLocation}.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> – main folder path with all needed file in it.
+:type path: string</li>
+<li><strong>type</strong> – level (class or biotype/subclass)
+:type type: string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dicoNbTot, {LevelLocation : numberOfLocation}</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.getpG4ShufLocNum">
+<code class="descclassname">countLocation.</code><code class="descname">getpG4ShufLocNum</code><span class="sig-paren">(</span><em>path</em>, <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.getpG4ShufLocNum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of location with at least one pG4r in the Shuf dataset.</p>
+<p>This function aim to find the number of location with at least one pG4r in
+it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> – main folder path with all needed file in it.
+:type path: string</li>
+<li><strong>type</strong> – level (class or biotype/subclass)
+:type type: string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dicoNbTot, {LevelLocation : numberOfLocation}</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.getpG4WtLocNum">
+<code class="descclassname">countLocation.</code><code class="descname">getpG4WtLocNum</code><span class="sig-paren">(</span><em>path</em>, <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.getpG4WtLocNum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary with the number of location with at least one pG4r.</p>
+<p>This function aim to find the number of location with at least one pG4r in
+it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> – main folder path with all needed file in it.
+:type path: string</li>
+<li><strong>type</strong> – level (class or biotype/subclass)
+:type type: string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dicoNbTot, {LevelLocation : numberOfLocation}</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.importIndexByTr">
+<code class="descclassname">countLocation.</code><code class="descname">importIndexByTr</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.importIndexByTr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary with all Tr and all their location.</p>
+<p>Browses the input location file and create a dictionary of dictionary :
+{idTr : {LocationName : [coords]} }. So we have for all transcript, all
+their location, and for all location we have their coordinates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> – Location filename, this file contain all locations
+coordinates and all transcript-biotype that ‘possess’ it.
+:type filename: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicoLoca, {idTr : {LocationName : [coords]} }.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.importLoca">
+<code class="descclassname">countLocation.</code><code class="descname">importLoca</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.importLoca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import into a dictionary the number of uniq location.</p>
+<p>Same as importLocaMulti but without the transcript constrain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> – Location filename, this file contain all locations
+coordinates and all transcript-biotype that ‘possess’ it.
+:type filename: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicoLoca, {Location-Biotype : [idLocation]}</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.importLocaMulti">
+<code class="descclassname">countLocation.</code><code class="descname">importLocaMulti</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.importLocaMulti" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import into a dictionary the number of uniq location by transcript.</p>
+<p>pG4r are affiliated to a chromosomal location and a transcript. So here we
+count the number tot of location according to transcripts. To do that all
+locations are browsed, then transcript</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> – Location filename, this file contain all locations
+coordinates and all transcript-biotype that ‘possess’ it.
+:type filename: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicoLoca, {Location-Biotype : [idLocation-idTr]}</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.main">
+<code class="descclassname">countLocation.</code><code class="descname">main</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function, only used for tests.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.overlapLocation">
+<code class="descclassname">countLocation.</code><code class="descname">overlapLocation</code><span class="sig-paren">(</span><em>coordspG4</em>, <em>coordsLoc</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.overlapLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the overlap between two set of coordinates.</p>
+<p>If there is an overlap (&gt;0) between an pG4r and the location, then the
+coords of the location are returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>intervalSeq</strong> – contain the start and the end of a pG4r.
+:type intervalSeq: list of int</li>
+<li><strong>intervalFeat</strong> – contain the start and the end of a gff feature.
+:type intervalFeat: list of int</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">‘:’.join(coordsLoc), location coord if overlap with the pG4r.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.overlaps">
+<code class="descclassname">countLocation.</code><code class="descname">overlaps</code><span class="sig-paren">(</span><em>interval1</em>, <em>interval2</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.overlaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the distance or overlap between two interval.</p>
+<p>Compute : min(ends) - max(starts). If &gt; 0, return the number of bp of
+overlap, if 0, they are book-ended and if &lt; 0 return the distance in
+bp between them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>interval1</strong> – contain the start and the end of a OQs.
+:type interval1: list of int</li>
+<li><strong>interval2</strong> – contain the start and the end of a gff feature.
+:type interval2: list of int</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">min(ends) - max(starts)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.readShufpG4r">
+<code class="descclassname">countLocation.</code><code class="descname">readShufpG4r</code><span class="sig-paren">(</span><em>pG4rFile</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.readShufpG4r" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a file containing all pG4r Shuf and parse it.</p>
+<p>This function aims to retrieve for each biotype location, the location where
+a pG4r is.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> – name of the file containing all shuf pG4r.
+:type filename: string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicoLoca, {Location-Biotype : [coordLocation]}</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="countLocation.readWtpG4r">
+<code class="descclassname">countLocation.</code><code class="descname">readWtpG4r</code><span class="sig-paren">(</span><em>filename</em>, <em>dicoLoc</em><span class="sig-paren">)</span><a class="headerlink" href="#countLocation.readWtpG4r" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the pG4r Wt file and map them on location to find their coords.</p>
+<p>In the input file, locations name are given but not their coords. So we need
+to map them to make them unique. Each line are red, and for each pG4r,
+we find the overlap between the pG4r and all location of this pG4r in this
+transcript. For example, there is a pG4r in a transcript 1. This Tr 1 have
+4CDS, 1 5UTR, 1 3UTR and 3 introns. So if this pG4r is annotated in a CDS,
+then all CDS will be browsed to find in wich one is the pG4r. Then this CDS
+and its coordinates are saved in a list.
+In this file, exon coding are not registered. So when a pG4r in a UTR, CDS
+or codon is found, the exon is also ‘created’ to don’t loose this
+information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> – name of the file with all Wt pG4r annotated.
+:type filename: string</li>
+<li><strong>dicoLoc</strong> – dicoLoc, {idTr : {LocationName : [coords]} }
+:type dicoLoc: dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dicoLoca, {Location-Biotype : [coordLocation]}</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="countTranscript.html" class="btn btn-neutral float-right" title="countTranscript" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="README.html" class="btn btn-neutral float-left" title="Welcome to G4Conserve’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

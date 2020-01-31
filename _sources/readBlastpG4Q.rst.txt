@@ -1,0 +1,5 @@
+readBlastpG4Q
+=============
+
+.. automodule:: readBlastpG4Q
+  :members:

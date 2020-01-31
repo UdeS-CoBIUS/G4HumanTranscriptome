@@ -1,0 +1,5 @@
+FilterG4DependingOnTr
+=====================
+
+.. automodule:: FilterG4DependingOnTr
+  :members:

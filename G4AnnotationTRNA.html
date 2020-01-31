@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>G4AnnotationTRNA &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="getDataFig" href="getDataFig.html" />
+    <link rel="prev" title="G4AnnotationPIRNA" href="G4AnnotationPIRNA.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="README.html" class="icon icon-home"> G4 Prediction in human transcriptom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="README.html">G4 Prediction in human transcriptom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="README.html">Docs</a> &raquo;</li>
+        
+      <li>G4AnnotationTRNA</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/G4AnnotationTRNA.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-G4AnnotationTRNA">
+<span id="g4annotationtrna"></span><h1>G4AnnotationTRNA<a class="headerlink" href="#module-G4AnnotationTRNA" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Copyright:</dt>
+<dd>Copyright Universite of Sherbrooke, departement of biochemistry and
+departement     of computation.</dd>
+<dt>Date:</dt>
+<dd>August 2018</dd>
+<dt>Description:</dt>
+<dd><dl class="first last docutils">
+<dt>This script aims to predict pG4r in transfer RNA and to computes</dt>
+<dd>statistiques about it. Firstly, windows from G4RNA screener are merged
+into pG4r. Then density is computed. The output is printed on the
+screen. Data are dowloaded from Genome tRNA Database in August 2018.</dd>
+</dl>
+</dd>
+<dt>Data availability:</dt>
+<dd><ul class="first last simple">
+<li>fasta sequences used with G4RNA screener were downloaded from Genomic tRNA Database in August 2018.</li>
+<li>G4RNA screener was launch in August 2018. Results may change if G4RNA is update later.</li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="G4AnnotationTRNA.ReturnG4InGene">
+<code class="descclassname">G4AnnotationTRNA.</code><code class="descname">ReturnG4InGene</code><span class="sig-paren">(</span><em>inputfile</em>, <em>parametersTool</em><span class="sig-paren">)</span><a class="headerlink" href="#G4AnnotationTRNA.ReturnG4InGene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges all windows from windows upper thresholds, it will pG4r.</p>
+<p>This function browsea all windows returned by G4RNA Screener and
+keep only those over the thresholds. Successive windows are merged.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inputfile</strong> (<em>string</em>) – name of the outputfile of G4RNA screener.</li>
+<li><strong>dicoParam</strong> (<em>dictionary</em>) – all parameters given to G4RNA screener.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">G4DetectedIntRNA, contains all predicted G4 in genes,
+with there scores.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4AnnotationTRNA.getLengthTRNA">
+<code class="descclassname">G4AnnotationTRNA.</code><code class="descname">getLengthTRNA</code><span class="sig-paren">(</span><em>inputfile</em><span class="sig-paren">)</span><a class="headerlink" href="#G4AnnotationTRNA.getLengthTRNA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counts the length of all tRNA present in the input file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputfile</strong> (<em>string</em>) – name of the file containing the list of informations
+for each tRNA.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">length, length of all tRNA present in the file.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">integer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4AnnotationTRNA.getNbrTRNA">
+<code class="descclassname">G4AnnotationTRNA.</code><code class="descname">getNbrTRNA</code><span class="sig-paren">(</span><em>inputfile</em><span class="sig-paren">)</span><a class="headerlink" href="#G4AnnotationTRNA.getNbrTRNA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of all tRNA present in the input file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputfile</strong> (<em>string</em>) – name of the file containing the list of informations
+for each tRNA.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">listepiRNA, liste of id piRNA.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="G4AnnotationTRNA.getNbrTRNAWithPG4">
+<code class="descclassname">G4AnnotationTRNA.</code><code class="descname">getNbrTRNAWithPG4</code><span class="sig-paren">(</span><em>dictionary</em><span class="sig-paren">)</span><a class="headerlink" href="#G4AnnotationTRNA.getNbrTRNAWithPG4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counts the number tRNA containing pG4r.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dictionary</strong> (<em>dictionary</em>) – informations of region G4 detected for each
+G4 region predicted in tRNA.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">nbrTRNAWithPG4, number of tRNA containing pG4r.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getDataFig.html" class="btn btn-neutral float-right" title="getDataFig" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="G4AnnotationPIRNA.html" class="btn btn-neutral float-left" title="G4AnnotationPIRNA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

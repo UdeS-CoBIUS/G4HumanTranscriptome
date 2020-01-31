@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>generateShuffle &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="README.html" class="icon icon-home"> G4 Prediction in human transcriptom
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="README.html">G4 Prediction in human transcriptom</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="README.html">Docs</a> &raquo;</li>
+        
+      <li>generateShuffle</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/generateShuffle.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-generateShuffle">
+<span id="generateshuffle"></span><h1>generateShuffle<a class="headerlink" href="#module-generateShuffle" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Copyright:</dt>
+<dd>Copyright Universite of Sherbrooke, departement of biochemistry and
+departement    of computation.</dd>
+<dt>Date:</dt>
+<dd>June 2019</dd>
+<dt>Description:</dt>
+<dd>This script aims to generate all random fasta needed. It will generate one
+fasta file for each segment location but also for junction. The id of each
+fasta is like : biotype:Trid:Start-End:Strand, exept for intron where the
+biotype is at the end. To generate random sequences we retrieve the sequence
+of the location we want, we transformed it into a list, then we shufle it
+(change all position of all element randomly), to finally join the shuffled
+list with no characters to recreate the sequence.</dd>
+<dt>Data availability:</dt>
+<dd><ul class="first last simple">
+<li>fasta sequences used with G4RNA screener were download from Ensembl. The human assembly is GRCh38p12.</li>
+<li>transcripts information were downloaded from ensembl via <a class="reference external" href="ftp://ftp.ensembl.org/pub/release-96/gtf/homo_sapiens/">ftp://ftp.ensembl.org/pub/release-96/gtf/homo_sapiens/</a></li>
+</ul>
+</dd>
+<dt>Abbreviation:</dt>
+<dd><ul class="first last simple">
+<li>bt for biotype</li>
+<li>tr for transcript</li>
+<li>dico for dictionnary</li>
+<li>w for word or words</li>
+<li>dir for directory</li>
+<li>cpt for compteur (counter)</li>
+</ul>
+</dd>
+</dl>
+<dl class="function">
+<dt id="generateShuffle.addExonIntron">
+<code class="descclassname">generateShuffle.</code><code class="descname">addExonIntron</code><span class="sig-paren">(</span><em>type</em>, <em>dico</em>, <em>dicoLine</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.addExonIntron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add to the index of location exon, intron and also spliced sites.</p>
+<p>First the exon or intron location is created and added to the index
+location. If the location is an intron, we create Donor spliced site and
+Acceptor splice site using the +- 59 nucleotides upstream and dowstream
+of each intron coords.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>type</strong> – name of the location, exon or intron.
+:type type: string</li>
+<li><strong>dico</strong> – aims to contain all location of a chromosome.
+:type dico: dictionary</li>
+<li><strong>dicoLine</strong> – line of the index file.
+:type dicoLine: dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dico, updated with new locations.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.addUTRCDS">
+<code class="descclassname">generateShuffle.</code><code class="descname">addUTRCDS</code><span class="sig-paren">(</span><em>dicoLine</em>, <em>dico</em>, <em>dicoBt</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.addUTRCDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add to the index of location UTR and CDS.</p>
+<p>CDS coords are computed from the comparison of exon coords and UTR coords.
+All those information are added to the index of location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dicoLine</strong> – contains all info on a line (except UTR).
+:type dicoLine: dictionary</li>
+<li><strong>dico</strong> – aims to contain all location of a chromosome.
+:type dico: dictionary</li>
+<li><strong>dicoBt</strong> – contains all biotype of all transcripts.
+:type dicoBt: dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dico, updated with new locations.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.createCoordSpliceSite">
+<code class="descclassname">generateShuffle.</code><code class="descname">createCoordSpliceSite</code><span class="sig-paren">(</span><em>coord1</em>, <em>coord2</em>, <em>dicoLine</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.createCoordSpliceSite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Depending on the strand, create coordinates of splice sites.</p>
+<p>Creates coordnates of Donor splice site and Acceptor splice site, depending
+of the strand. The coordinates are +-59 nucletides of the intron coords
+because we only want to detect G4 that are close to it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>coord1</strong> – start of the intron.
+:type coord1: int</li>
+<li><strong>coord2</strong> – end of the intron.
+:type coord2: int</li>
+<li><strong>dicoLine</strong> – line of the index file.
+:type dicoLine: dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">idDonor, idAcceptor, id of the Donor splice site and of the
+Acceptor splice sites.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">strings</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.createFasta">
+<code class="descclassname">generateShuffle.</code><code class="descname">createFasta</code><span class="sig-paren">(</span><em>dico</em>, <em>fastaFile</em>, <em>chr</em>, <em>outputDir</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.createFasta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create fasta file from the index of location.</p>
+<p>Each sequence corresponds to one location. The id is like :
+Gene:location:chr:start-end:Tr1-bt|Tr2-bt
+Location of only one nucleotides are not added to the fasta file.
+The sequence is retrieved from a fasta file containing the entire
+chromosome. This file have been dowloaded from the ensembl FTP.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dico</strong> – aims to contain all location of a chromosome.
+:type dico: dictionary</li>
+<li><strong>fastaFile</strong> – directory containing fasta of all chromosomes.
+:type fastaFile: string</li>
+<li><strong>chr</strong> – name of the chromosome.
+:type chr: string</li>
+<li><strong>outputDir</strong> – name of the output directory.
+:type outputDir: string</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.findCDS">
+<code class="descclassname">generateShuffle.</code><code class="descname">findCDS</code><span class="sig-paren">(</span><em>coord5UTR</em>, <em>coord3UTR</em>, <em>coordExon</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.findCDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds where is the CDS in an exon.</p>
+<p>We compute the overlap between UTR and exon. Then, depending of the overlap,
+we find CDS coords. If the there is a perfect overlap UTR-Exon then there is
+no CDS. If there no overlap then the exon is an CDS. Finally if there is an
+overlap, we compute the CDS coords.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>coord5UTR</strong> – coords of a 5UTR.
+:type coord5UTR: list of int</li>
+<li><strong>coord3UTR</strong> – coords of a 3UTR.
+:type coord3UTR: list of int</li>
+<li><strong>coordExon</strong> – coords of an exon.
+:type coordExon: list of int</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">coordCDS, coords of a CDS.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.getDicoIndex">
+<code class="descclassname">generateShuffle.</code><code class="descname">getDicoIndex</code><span class="sig-paren">(</span><em>filename</em>, <em>dicoBt</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.getDicoIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the Index file into a dictionary to get all locations.</p>
+<p>Browse all transcript in the index file and computes CDS, Donor splice site
+and Acceptor splice site coordinates from other coords feature (exon,
+intron and UTR).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> – name of the index file,
+:type filename: string</li>
+<li><strong>dicoBt</strong> – contains bt of all transcripts.
+:type dicoBt: dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dico, index file parsed to obtaine all locations informations.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.getUTRCoordByStrand">
+<code class="descclassname">generateShuffle.</code><code class="descname">getUTRCoordByStrand</code><span class="sig-paren">(</span><em>w</em>, <em>dicoLine</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.getUTRCoordByStrand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves coords of UTR depending on the strand.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>w</strong> (<em>list</em>) – contains all words of one line of the index file.</li>
+<li><strong>dicoLine</strong> (<em>dictionary</em>) – contains all info on a line (except UTR).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dicoLine, contains all info on a line, updated with UTR.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.importFastaChromosome">
+<code class="descclassname">generateShuffle.</code><code class="descname">importFastaChromosome</code><span class="sig-paren">(</span><em>directory</em>, <em>chr</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.importFastaChromosome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import the fasta file containing an entire chromosome sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>directory</strong> (<em>string</em>) – directory name containing all chromosome fasta.</li>
+<li><strong>chr</strong> (<em>string</em>) – chromosome wanted.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">sequence, entire chromosome sequence.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.overlaps">
+<code class="descclassname">generateShuffle.</code><code class="descname">overlaps</code><span class="sig-paren">(</span><em>interval1</em>, <em>interval2</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.overlaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the distance or overlap between two interval.</p>
+<p>Compute : min(ends) - max(starts). If &gt; 0, return the number of bp of
+overlap, if 0, they are book-ended and if &lt; 0 return the distance in
+bp between them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>interval1</strong> (<em>list of int</em>) – contain the start and the end of a OQs.</li>
+<li><strong>interval2</strong> (<em>list of int</em>) – contain the start and the end of a gff feature.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">min(ends) - max(starts)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.parseIndex">
+<code class="descclassname">generateShuffle.</code><code class="descname">parseIndex</code><span class="sig-paren">(</span><em>w</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.parseIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforme a line from the index file into a dictionary.</p>
+<p>As one line of the index file contain many information, we parsed it into
+a dictionnary to access easly to different informations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>w</strong> – contains all words of one line of the index file.
+:type w: list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dicoLine, contains all information of one index line.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.reverseSequence">
+<code class="descclassname">generateShuffle.</code><code class="descname">reverseSequence</code><span class="sig-paren">(</span><em>Sequence</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.reverseSequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse complement a DNA sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Sequence</strong> (<em>string</em>) – DNA sequence that will be reversed.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Sequence, the initial DNA sequence but reverse complemented.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.shuffleSeq">
+<code class="descclassname">generateShuffle.</code><code class="descname">shuffleSeq</code><span class="sig-paren">(</span><em>seq</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.shuffleSeq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shuffle a sequence.</p>
+<p>This function aims to shuffle a fasta sequence to randomize its sequence.
+The fasta sequence is imported from a fasta file, then converted into a
+list (one element corrresponds to one nucleotide), the list is shuffled and
+tehn joined with nothing to recreate the sequence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>seq</strong> (<em>string</em>) – sequence to shuffle.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">seq, sequence shuffled</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="generateShuffle.writeFasta">
+<code class="descclassname">generateShuffle.</code><code class="descname">writeFasta</code><span class="sig-paren">(</span><em>outDir</em>, <em>dicoFasta</em>, <em>location</em><span class="sig-paren">)</span><a class="headerlink" href="#generateShuffle.writeFasta" title="Permalink to this definition">¶</a></dt>
+<dd><p>From a dictionary {id : seq}, write a fasta file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>outDir</strong> (<em>string</em>) – name of the directory where the output file need to be writen.</li>
+<li><strong>dicoFasta</strong> (<em>dictionary</em>) – {id : seq}</li>
+<li><strong>location</strong> (<em>string</em>) – name of the chromosome.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

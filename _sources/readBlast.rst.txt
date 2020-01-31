@@ -1,0 +1,5 @@
+readBlast
+=========
+
+.. automodule:: readBlast
+  :members:

@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Welcome to G4Conserve’s documentation! &mdash; G4 Prediction in human transcriptom 1 documentation</title>
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+
+
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+
+
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="computeDensities" href="computeDensities.html" />
+</head>
+
+<body class="wy-body-for-nav">
+
+
+  <div class="wy-grid-for-nav">
+
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+            <a href="#" class="icon icon-home"> G4 Prediction in human transcriptom
+
+
+
+          </a>
+
+
+
+
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+
+
+
+
+
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="computeDensities.html">computeDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FilterG4DependingOnTr.html">FilterG4DependingOnTr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GenerateExonJunctionSequences.html">GenerateExonJunctionSequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generateShuffle.html">generateShuffle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RunBlast.html">RunBlast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlastpG4Q.html">readBlastpG4Q</a></li>
+</ul>
+
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+      <nav class="wy-nav-top" aria-label="top navigation">
+
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">G4 Prediction in human transcriptom</a>
+
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+        <div class="rst-content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+
+      <li><a href="#">Docs</a> &raquo;</li>
+
+      <li>Welcome to G4Conserve’s documentation!</li>
+
+
+      <li class="wy-breadcrumbs-aside">
+
+
+            <a href="_sources/README.rst.txt" rel="nofollow"> View page source</a>
+
+
+      </li>
+
+  </ul>
+
+
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+
+  <div class="section" id="welcome-to-g4conserve-s-documentation">
+<h1>Welcome to G4Conserve’s documentation!<a class="headerlink" href="#welcome-to-g4conserve-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This project aims to predict G-quadruplexes (G4) in the whole human’s
+transcriptome.</p>
+</div>
+<div class="section" id="data-availability">
+<h1>Data availability<a class="headerlink" href="#data-availability" title="Permalink to this headline">¶</a></h1>
+<p>If the upper link is not owrking here are the main step to retrieve all input files:</p>
+<ul class="simple">
+<li>Go to the ensembl <a class="reference external" href="http://jul2018.archive.ensembl.org/index.html">archive Jul 2018 v93</a></li>
+<li>Go to the <strong>biotmart</strong> download tool</li>
+<li>Select the database “Ensembl Genes 93” and the dataset “Human genes (GRCh38.p12)”</li>
+<li>Then, in filter select one chromosomes from <strong>region</strong> (1 to 22 and X Y), you
+need to download one chromosome by one chromosome</li>
+<li>For the <strong>first file type</strong> you need to select the <strong>attribute</strong> Structures
+and select in order : Gene stable ID, Transcript stable ID,
+Chromosome/scaffold name, Gene type, 5’ UTR start, 5’ UTR end, 3’ UTR start,
+3’ UTR end, Exon region start (bp), Exon region end (bp), Exon rank in
+transcript, Strand. This file is named <strong>HS_transcript_unspliced_chrY.txt</strong>
+for the Y chromosome.</li>
+<li>The <strong>second file type</strong> contains the <strong>attribute</strong> sequences of Unspliced
+Gene and as header the features : Gene stable ID, Gene start (bp), Gene end
+(bp). This type of file are named <strong>HS_gene_unspliced_chrY.txt</strong></li>
+<li>The <strong>third file type</strong> is an <strong>attribute</strong> feature to get transcript
+class : Gene stable ID, Transcript stable ID, Chromosome/scaffold name,
+Transcript type. This file type is contained in a special directory
+“transcriptType” and file are named like <strong>transcriptType_chrY</strong></li>
+<li>The last files are whole chromosomes fasta file, downloaded from the
+FTP : <a class="reference external" href="ftp://ftp.ensembl.org/pub/release-93/fasta/homo_sapiens/dna/">ftp://ftp.ensembl.org/pub/release-93/fasta/homo_sapiens/dna/</a>. Only
+<strong>Homo_sapiens.GRCh38.dna.chromosome.1.fa.gz</strong> file are downloaded for each chromosomes.</li>
+</ul>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>To use all scripts in this project you will need to have python 2.7.</p>
+<p>You will also need to install G4RNA Screener from
+<a class="reference external" href="http://gitlabscottgroup.med.usherbrooke.ca/J-Michel/g4rna_screener.git">Michelle Scott gitlab</a>.</p>
+<p>Following is procedure to install G4RNA screener</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">gitlabscottgroup</span><span class="o">.</span><span class="n">med</span><span class="o">.</span><span class="n">usherbrooke</span><span class="o">.</span><span class="n">ca</span><span class="o">/</span><span class="n">J</span><span class="o">-</span><span class="n">Michel</span><span class="o">/</span><span class="n">g4rna_screener</span><span class="o">.</span><span class="n">git</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">biopython</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">PyBrain</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">regex</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">scipy</span>
+<span class="n">cd</span> <span class="n">PATH</span><span class="o">/</span><span class="n">TO</span><span class="o">/</span><span class="n">PYTHON</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span>    <span class="ow">or</span>    <span class="n">cd</span> <span class="n">PATH</span><span class="o">/</span><span class="n">TO</span><span class="o">/</span><span class="n">PYTHON</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">i</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dev</span><span class="o">.</span><span class="n">mysql</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">get</span><span class="o">/</span><span class="n">Downloads</span><span class="o">/</span><span class="n">Connector</span><span class="o">-</span><span class="n">Python</span><span class="o">/</span><span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="mf">2.1</span><span class="o">.</span><span class="mf">4.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">xzf</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="mf">2.1</span><span class="o">.</span><span class="mf">4.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="mf">2.1</span><span class="o">.</span><span class="mi">4</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing">
+<h2>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h2>
+<p>There is no particular installation because their is only individual home made
+scripts. Here is a soft descriptino of them:</p>
+<ul class="simple">
+<li>ReplaceInformation.py -&gt; This script aims to create
+junction between exons and also compute the coordinates of introns.
+To do that, this script takes as a file with informations about transcripts.
+This file is avaible in Ensembl and downable with Biomart.</li>
+<li>G4RNA Screener -&gt; used on fasta files with genes and junction.</li>
+<li>all G4Annotation -&gt; filters pG4 and add there location and biotype. Inputs are
+output from G4RNA Screener, the parsed file containing introns coordinates and
+also a file containing transcripts’s biotype (available on Ensembl).</li>
+<li>G4Calcul.py -&gt; computes all statistics and enrichment about our pG4.</li>
+<li>Coverage.py -&gt; computes coverage between different data set. Takes as input
+3 data set : pG4, G4RNA G4 and G4 from rG4seq study.</li>
+<li>recurentFunction -&gt; little library of functions that are often used.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="glossary">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="computeDensities.html">computeDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countLocation.html">countLocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countTranscript.html">countTranscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FilterG4DependingOnTr.html">FilterG4DependingOnTr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4Annotation.html">G4Annotation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationCirculaire.html">G4AnnotationCirculaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationPIRNA.html">G4AnnotationPIRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="G4AnnotationTRNA.html">G4AnnotationTRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GenerateExonJunctionSequences.html">GenerateExonJunctionSequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generateShuffle.html">generateShuffle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getDataFig.html">getDataFig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getMainDensities.html">getMainDensities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readRandom.html">readRandom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recurentFunction.html">recurentFunction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RunBlast.html">RunBlast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlast.html">readBlast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readBlastpG4Q.html">readBlastpG4Q</a></li>
+</ul>
+</div>
+<p>Here is a global pipeline of how to use those scripts : <img alt="H" src="_images/Pipeline.png" /></p>
+</div>
+<div class="section" id="command-lines">
+<h1>Command lines<a class="headerlink" href="#command-lines" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="first-step-on-a-local-machine-configuration-and-data-retrival">
+<h2>First step, on a local machine : configuration and data retrival<a class="headerlink" href="#first-step-on-a-local-machine-configuration-and-data-retrival" title="Permalink to this headline">¶</a></h2>
+<p>Go to the folder were you want to make this project or create one. You need
+to launch scripts from this folder or you will have to change paths.</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>mkdir G4prediction
+<span class="nb">cd</span> G4prediction
+</pre></div>
+</td></tr></table></div>
+<p>Then, we configure this folder, retrieve scripts and then data</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span> mkdir Data
+ <span class="nb">cd</span> Data/
+ <span class="k">for</span> chr in <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> <span class="m">15</span> <span class="m">16</span> <span class="m">17</span> <span class="m">18</span> <span class="m">19</span> <span class="m">20</span> <span class="m">21</span> <span class="m">22</span> X Y<span class="p">;</span> <span class="k">do</span> mkdir chr<span class="nv">$chr</span><span class="p">;</span> <span class="k">done</span>
+ mkdir transcriptType
+ mkdir Fasta
+ <span class="nb">cd</span> Fasta
+ wget ftp://ftp.ensembl.org/pub/release-93/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.*
+ rm Homo_sapiens.GRCh38.dna.chromosome.MT.fa.gz
+ gunzip Homo_sapiens.GRCh38.dna.chromosome.*
+ <span class="nb">cd</span> ../../
+ git clone https://github.com/UdeS-CoBIUS/G4HumanTranscriptome.git
+</pre></div>
+</td></tr></table></div>
+<p>At this point, you can download data, as explained in Data availability. Then
+You can launch the first script to generate Exon-Exon sequences, and upload your
+data to your cluster of calcul (Here it’s graham from compute canada).</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="k">for</span> chr in <span class="k">$(</span>ls Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="nb">time</span> python G4Conserve/script/GenerateExonJunctionSequences.py -chr <span class="nv">$chr</span><span class="p">;</span> <span class="k">done</span>
+  scp -r -p Data/ userID@graham.computecanada.ca:~/scratch/G4prediction
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="second-step-on-cluster-generate-shuffled-dataset-and-predict-g4">
+<h2>Second step on cluster : generate shuffled dataset, and predict G4<a class="headerlink" href="#second-step-on-cluster-generate-shuffled-dataset-and-predict-g4" title="Permalink to this headline">¶</a></h2>
+<p>Here follow all step to create tmp folder, results folder and to predict G4
+and annotate pG4. all bash scripts are given in the folder sBash, but path
+should be changed depending on your cluster or user ID.</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># create a few folder for tmp files</span>
+ <span class="k">for</span> chr in <span class="k">$(</span>ls ~/scratch/G4prediction/Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> mkdir ~/scratch/TestRepro/Data/<span class="nv">$chr</span>/SplitFile<span class="p">;</span><span class="k">done</span>
+ <span class="k">for</span> chr in <span class="k">$(</span>ls ~/scratch/G4prediction/Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> mkdir ~/scratch/TestRepro/Data/<span class="nv">$chr</span>/CSVFile<span class="p">;</span><span class="k">done</span>
+ <span class="c1"># generate random and then split all fasta file</span>
+ <span class="k">for</span> chr in <span class="k">$(</span>ls ~/scratch/G4prediction/Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> sbatch ../../Scripts/generateRandom.sh <span class="nv">$chr</span> <span class="p">;</span><span class="k">done</span>
+ <span class="k">for</span> chr in <span class="k">$(</span>ls ~/scratch/G4prediction/Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> sbatch ../../Scripts/fasta_enum_sbatch.sh <span class="nv">$chr</span> <span class="k">$(</span>ls ~/scratch/TestRepro/Data/<span class="nv">$chr</span> <span class="p">|</span> grep <span class="s1">&#39;gene_unspliced&#39;</span><span class="k">)</span><span class="p">;</span> <span class="k">done</span>
+ <span class="k">for</span> chr in <span class="k">$(</span>ls ~/scratch/G4prediction/Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> sbatch ../../Scripts/fasta_enum_sbatch.sh <span class="nv">$chr</span> HS_transcript_unspliced_<span class="nv">$chr_Sequence</span>.txt<span class="p">;</span> <span class="k">done</span>
+ <span class="k">for</span> chr in <span class="k">$(</span>ls ~/scratch/G4prediction/Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="k">for</span> file in <span class="k">$(</span>ls ~/scratch/TestRepro/Data/<span class="nv">$chr</span> <span class="p">|</span> grep Shuffle<span class="k">)</span><span class="p">;</span> <span class="k">do</span> sbatch ../../Scripts/fasta_enum_sbatch.sh <span class="nv">$chr</span> <span class="nv">$file</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span> <span class="k">done</span>
+ <span class="c1"># predict G4 with G4RNA screener, it create one task for each splited file</span>
+ <span class="c1"># with a max of 999 runing at the same time</span>
+ sbatch ../../Scripts/submitG4RNAScreener.sh
+ <span class="c1"># create folder for results</span>
+ mkdir ~/scratch/G4prediction/Results
+ mkdir ~/scratch/G4prediction/Results/perChromosome
+ <span class="c1"># filter the output of G4RNA screener and annotate pG4r for both dataset</span>
+ <span class="k">for</span> chr in <span class="k">$(</span>ls ~/scratch/G4prediction/Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> sbatch ../../Scripts/G4Annotation.sh <span class="nv">$chr</span><span class="p">;</span> <span class="k">done</span>
+ <span class="k">for</span> chr in <span class="k">$(</span>ls ~/scratch/G4prediction/Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> sbatch ../../Scripts/readRandom.sh <span class="nv">$chr</span><span class="p">;</span> <span class="k">done</span>
+ <span class="c1"># if needed, SplitFile folders and CSVFile folders can be deleted</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="third-step-on-local-machine-compute-densities-and-generate-figures">
+<h2>Third step on local machine : compute densities and generate figures<a class="headerlink" href="#third-step-on-local-machine-compute-densities-and-generate-figures" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  scp -r -p userID/graham.computecanada.ca:~/scratch/G4prediction/ ./
+  <span class="c1"># don&#39;t forget to go to your main folder</span>
+  mkdir Documents/G4prediction/Results/All
+  <span class="c1"># join all results chromosomes files or annotation file into one for the</span>
+  <span class="c1"># entire human genome</span>
+  <span class="k">for</span> file in <span class="k">$(</span>ls Documents/G4prediction/Results/perChromosome <span class="p">|</span> grep <span class="s1">&#39;G4InTran&#39;</span><span class="k">)</span><span class="p">;</span> <span class="k">do</span> cat Documents/TestRepro/Results/perChromosome/<span class="nv">$file</span><span class="p">;</span> <span class="k">done</span> &gt;&gt; Documents/TestRepro/Results/All/HS_All_G4InTranscript.txt
+  <span class="k">for</span> file in <span class="k">$(</span>ls Results/perChromosome <span class="p">|</span> grep shuffle<span class="k">)</span><span class="p">;</span> <span class="k">do</span> cat Results/perChromosome/<span class="nv">$file</span><span class="p">;</span> <span class="k">done</span> &gt;&gt; Results/All/pG4r_shuffle.csv
+  <span class="k">for</span> file in <span class="k">$(</span>ls Data/transcriptType/ <span class="p">|</span> grep -v All<span class="k">)</span><span class="p">;</span> <span class="k">do</span> cat Data/transcriptType/<span class="nv">$file</span><span class="p">;</span> <span class="k">done</span> &gt;&gt; Data/transcriptType/transcriptType_All.txt
+  <span class="k">for</span> chr in <span class="k">$(</span>ls Data <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="k">for</span> file in <span class="k">$(</span>ls Data/<span class="nv">$chr</span> <span class="p">|</span> grep Shuffle<span class="k">)</span><span class="p">;</span> <span class="k">do</span> cat Data/<span class="nv">$chr</span>/<span class="nv">$file</span> <span class="p">|</span> grep <span class="s1">&#39;&gt;&#39;</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span> <span class="k">done</span> &gt;&gt; Results/All/Locations.txt
+  <span class="k">for</span> chr in <span class="k">$(</span>ls Data/ <span class="p">|</span> grep chr<span class="k">)</span><span class="p">;</span> <span class="k">do</span> cat <span class="s1">&#39;Data/&#39;</span><span class="nv">$chr</span><span class="s1">&#39;/HS_transcript_unspliced_&#39;</span><span class="nv">$chr</span><span class="s1">&#39;_Index.txt&#39;</span><span class="p">;</span> <span class="k">done</span> &gt;&gt; Data/transcriptType/HS_transcript_unspliced_All.txt
+  mkdir Results/Figures
+  <span class="c1"># create first a table with densities at the location level for all subclasses</span>
+  <span class="c1"># then compute a table for each figure</span>
+  python ./G4Conserve/scripts/getMainDensities.py
+  python ./G4Conserve/scripts/getDataFig.py
+</pre></div>
+</td></tr></table></div>
+<p>At this point, you should have all results done. The last script to use is the
+rmd one, were a rmarkdown on html was made.</p>
+</div>
+<div class="section" id="rg4seq-dataset-comparison">
+<h2>rG4seq dataset comparison<a class="headerlink" href="#rg4seq-dataset-comparison" title="Permalink to this headline">¶</a></h2>
+<p>For this part, those scripts are used : RunBlast , readBlast and readBlastpG4Q.</p>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+
+          </div>
+          <footer>
+
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+        <a href="computeDensities.html" class="btn btn-neutral float-right" title="computeDensities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+
+
+    </div>
+
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Sarah Belhamiti, Anaïs Vannutelli
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+
+
+
+
+
+</body>
+</html>
