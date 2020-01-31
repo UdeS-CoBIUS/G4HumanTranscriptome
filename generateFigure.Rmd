@@ -1,0 +1,433 @@
+---
+title: "Generation of figures"
+author: "Anaïs Vannutelli"
+date: "January 22, 2019"
+output: 
+  html_document: 
+    fig_caption: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This r script make the figures. Each of them were saved as svg, like that we could change their labels and make those more readable. Those modification were strictly made to make the figures readables. We didn't modify any results. Here follow a list of modification made on the figures after the use of this script :
+
+* labels of X axis : to generate figures, unique labels (like 'exon-proteincoding') are needed but they are not readable, so they were simplified afterward (like PC and we add a color to know it is an exon)
+* Colors of histogram : for an unknown reason, the theme only apply to lollipop plot but not for histogram, so those were change afterward
+* Legend name and order : in legends the column name appear so we removed it. We also change the order of feature to make them appear with the same order as in the figure
+* X and Y label were enlarged
+
+# Library used
+
+```{r}
+library(gridExtra)
+library(ggplot2)
+library(grid)
+library(plotly)
+```
+
+# Figure 3 : Distribution of pG4r in the transcriptome
+
+## A : GC content and pG4r densities
+
+```{r}
+DataFigure3 <- read.csv("~/Documents/TestRepro/Results/Figures/DataFig3.csv", sep="\t", header=TRUE)
+DataFigure3$Class <- factor(DataFigure3$Class, levels=unique(DataFigure3$Class))
+
+g.bottom <- ggplot(DataFigure3) +
+              geom_segment( aes(x=DataFigure3$Class, xend=DataFigure3$Class, y=DataFigure3$DensityWt, yend=DataFigure3$DensityShuf), size=1) +
+              geom_point( aes(x=DataFigure3$Class, y=DataFigure3$DensityWt), color='darkgray', size=4.5) +
+              geom_point( aes(x=DataFigure3$Class, y=DataFigure3$DensityShuf), color='black', size=3 ) +
+              xlab(" ") +
+              ylab(" Density in segmental location (pG4r/kb)")
+
+g.top <- ggplot(DataFigure3, aes(x=DataFigure3$Class, y=DataFigure3$GC)) +
+          geom_bar(stat = "identity", width=0.04, fill = 'black')+
+          xlab(" ") +
+          ylab("GC content (%)")
+
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## B : percent of transcript with at list one pG4r in it
+
+```{r}
+g <- ggplot(DataFigure3) +
+    geom_segment( aes(x=DataFigure3$Class, xend=DataFigure3$Class, y=DataFigure3$PercentWt, yend=DataFigure3$PercentShuf), size=1) +
+    geom_point( aes(x=DataFigure3$Class, y=DataFigure3$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFigure3$Class, y=DataFigure3$PercentShuf), color='black', size=3 ) +
+    xlab(" ") +
+    ylab("Percent of transcript with pG4r")
+g
+```
+
+# Figure 4 : Densities of pG4r and proportion of transcript with pG4r in coding transcripts
+
+## A : pG4r Densities and GC content of transcript
+```{r}
+DataFig4 <- read.csv("~/Documents/TestRepro/Results/Figures/DataFig4.csv", sep="\t", header=TRUE)
+
+DataFig4$Biotype = factor(DataFig4$Biotype, levels=unique(DataFig4$Biotype))
+
+g.bottom <- ggplot(DataFig4) +
+              geom_segment( aes(x=DataFig4$Biotype, xend=DataFig4$Biotype, y=DataFig4$DensityWt, yend=DataFig4$DensityShuf), size=1) +
+              geom_point( aes(x=DataFig4$Biotype, y=DataFig4$DensityWt), color='darkgray', size=4.5) +
+              geom_point( aes(x=DataFig4$Biotype, y=DataFig4$DensityShuf), color='black', size=3 ) +
+              xlab(" ") +
+              ylab(" Density in segmental location (pG4r/kb)")
+g.top <- ggplot(DataFig4, aes(x=DataFig4$Biotype, y=DataFig4$GC)) +
+          geom_bar(stat = "identity", width=0.05, fill = 'black')+
+          xlab(" ") +
+          ylab("GC content (%)")
+
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## B : Proportion of transcript with at least one pG4r
+```{r}
+g <- ggplot(DataFig4) +
+    geom_segment( aes(x=DataFig4$Biotype, xend=DataFig4$Biotype, y=DataFig4$PercentWt, yend=DataFig4$PercentShuf), size=1) +
+    geom_point( aes(x=DataFig4$Biotype, y=DataFig4$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFig4$Biotype, y=DataFig4$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of transcript with pG4r")
+g
+```
+
+# Figure 5 : pG4 densities, Gc content and proportion of pG4r in coding transcript by locations
+
+## A : Segmental locations, GC content and densities
+
+```{r}
+DataFigure5 <- read.csv("~/Documents/TestRepro/Results/Figures/DataFig5.csv", sep="\t", header=TRUE)
+
+DataFigure5$LocID = factor(DataFigure5$LocID, levels=unique(DataFigure5$LocID))
+DataFig5A = DataFigure5[DataFigure5$Type == 'Segment',]
+DataFig5B = DataFigure5[DataFigure5$Type != 'Segment',]
+DataFig5A$LocID = factor(DataFig5A$LocID, levels=unique(DataFig5A$LocID))
+DataFig5B$LocID = factor(DataFig5B$LocID, levels=unique(DataFig5B$LocID))
+
+#figure4 A (segment location)
+g.bottom <- ggplot(DataFig5A) +
+        geom_segment( aes(x=DataFig5A$LocID, xend=DataFig5A$LocID, y=DataFig5A$DensityWt, yend=DataFig5A$DensityShuf, color=DataFig5A$Location), size=1) +
+        scale_color_brewer(palette="Dark2")+
+        geom_point( aes(x=DataFig5A$LocID, y=DataFig5A$DensityWt), color='darkgray', size=4.5 ) +
+        geom_point( aes(x=DataFig5A$LocID, y=DataFig5A$DensityShuf), color='black', size=3 ) +
+        #theme(axis.text.x = element_text(angle = 45))+
+        xlab(" ") +
+        ylab("pG4r Density (pG4r/kb)")
+
+g.top <- ggplot(DataFig5A, aes(x=DataFig5A$LocID, y=DataFig5A$GC, fill=DataFig5A$Location)) +
+          geom_bar(stat = "identity", width=0.2)+
+          scale_color_brewer(palette="Dark2")+
+          xlab(" ") +
+          ylab("GC content (%)")
+
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## B : Segmental locations, percentage of codind locations with pG4r
+
+```{r}
+g <- ggplot(DataFig5A) +
+    geom_segment( aes(x=DataFig5A$LocID, xend=DataFig5A$LocID, y=DataFig5A$PercentWt, yend=DataFig5A$PercentShuf, color=DataFig5A$Location), size=1) +
+    geom_point( aes(x=DataFig5A$LocID, y=DataFig5A$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFig5A$LocID, y=DataFig5A$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of location with pG4r (%)")
+g
+```
+
+## C : Point locations, GC content and densities
+
+```{r}
+g.bottom <- ggplot(DataFig5B) +
+        geom_segment( aes(x=DataFig5B$LocID, xend=DataFig5B$LocID, y=DataFig5B$DensityWt, yend=DataFig5B$DensityShuf, color=DataFig5B$Location), size=1) +
+        scale_color_brewer(palette="Dark2")+
+        geom_point( aes(x=DataFig5B$LocID, y=DataFig5B$DensityWt), color='darkgray', size=4.5 ) +
+        geom_point( aes(x=DataFig5B$LocID, y=DataFig5B$DensityShuf), color='black', size=3 ) +
+        #theme(axis.text.x = element_text(angle = 45))+
+        xlab(" ") +
+        ylab("pG4r Density (pG4r/kb)")
+
+g.top <- ggplot(DataFig5B, aes(x=DataFig5B$LocID, y=DataFig5B$GC, fill=DataFig5B$Location)) +
+           geom_bar(stat = "identity", width=0.2)+
+          scale_color_brewer(palette="Dark2")+
+          xlab(" ") +
+          ylab("GC content (%)")
+
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## D : Point locations, percentage of codind locations with pG4r
+
+```{r}
+g <- ggplot(DataFig5B) +
+    geom_segment( aes(x=DataFig5B$LocID, xend=DataFig5B$LocID, y=DataFig5B$PercentWt, yend=DataFig5B$PercentShuf, color=DataFig5B$Location), size=1) +
+    geom_point( aes(x=DataFig5B$LocID, y=DataFig5B$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFig5B$LocID, y=DataFig5B$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of location with pG4r (%)")
+g
+```
+
+# Figure 6 : Distribution of pG4r in the ncRNA class
+
+## A ShortNC, GC content and densities
+
+```{r}
+DataFigure6 <- read.csv("~/Documents/TestRepro/Results/Figures/DataFig6.csv", sep="\t", header=TRUE)
+
+DataFigure6$Biotype = factor(DataFigure6$Biotype, levels=unique(DataFigure6$Biotype))
+DataFig6A = DataFigure6[DataFigure6$Class == 'ShortNC',]
+DataFig6B = DataFigure6[DataFigure6$Class != 'ShortNC',]
+DataFig6A$LocID = factor(DataFig6A$Biotype, levels=unique(DataFig6A$Biotype))
+DataFig6B$LocID = factor(DataFig6B$Biotype, levels=unique(DataFig6B$Biotype))
+
+#A
+g.bottom <- ggplot(DataFig6A) +
+              geom_segment( aes(x=DataFig6A$Biotype, xend=DataFig6A$Biotype, y=DataFig6A$DensityWt, yend=DataFig6A$DensityShuf), size=1) +
+              geom_point( aes(x=DataFig6A$Biotype, y=DataFig6A$DensityWt), color='darkgray', size=4.5) +
+              geom_point( aes(x=DataFig6A$Biotype, y=DataFig6A$DensityShuf), color='black', size=3 ) +
+              xlab(" ") +
+              ylab(" Density in segmental location (pG4r/kb)")
+g.top <- ggplot(DataFig6A, aes(x=DataFig6A$Biotype, y=DataFig6A$GC)) +
+          geom_bar(stat = "identity", width=0.05, fill = 'black')+
+          xlab(" ") +
+          ylab("GC content (%)")
+
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## B : ShortNC, percentage of codind locations with pG4r
+
+```{r}
+g <- ggplot(DataFig6A) +
+    geom_segment( aes(x=DataFig6A$Biotype, xend=DataFig6A$Biotype, y=DataFig6A$PercentWt, yend=DataFig6A$PercentShuf), size=1) +
+    geom_point( aes(x=DataFig6A$Biotype, y=DataFig6A$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFig6A$Biotype, y=DataFig6A$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of transcript with pG4r (%)")
+g
+```
+
+## C : LongNC, GC content and densities
+
+```{r}
+g.bottom <- ggplot(DataFig6B) +
+              geom_segment( aes(x=DataFig6B$Biotype, xend=DataFig6B$Biotype, y=DataFig6B$DensityWt, yend=DataFig6B$DensityShuf), size=1) +
+              geom_point( aes(x=DataFig6B$Biotype, y=DataFig6B$DensityWt), color='darkgray', size=4.5) +
+              geom_point( aes(x=DataFig6B$Biotype, y=DataFig6B$DensityShuf), color='black', size=3 ) +
+              xlab(" ") +
+              ylab(" Density in segmental location (pG4r/kb)")
+g.top <- ggplot(DataFig6B, aes(x=DataFig6B$Biotype, y=DataFig6B$GC)) +
+          geom_bar(stat = "identity", width=0.05, fill = 'black')+
+          xlab(" ") +
+          ylab("GC content (%)")
+
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## D : LongNC, percentage of codind locations with pG4r
+
+```{r}
+g <- ggplot(DataFig6B) +
+    geom_segment( aes(x=DataFig6B$Biotype, xend=DataFig6B$Biotype, y=DataFig6B$PercentWt, yend=DataFig6B$PercentShuf), size=1) +
+    geom_point( aes(x=DataFig6B$Biotype, y=DataFig6B$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFig6B$Biotype, y=DataFig6B$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of transcript with pG4r (%)")
+g
+```
+
+# Figure 7 : pG4 densities, Gc content and proportion of pG4r in LongNC transcript by locations
+
+## A : Segmental locations, GC content and densities
+
+```{r}
+DataFigure7 <- read.csv("~/Documents/TestRepro/Results/Figures/DataFig7.csv", sep="\t", header=TRUE)
+
+DataFigure7$LocID = factor(DataFigure7$LocID, levels=unique(DataFigure7$LocID))
+DataFig7A = DataFigure7[DataFigure7$Type == 'Segment',]
+DataFig7B = DataFigure7[DataFigure7$Type != 'Segment',]
+DataFig7A$LocID = factor(DataFig7A$LocID, levels=unique(DataFig7A$LocID))
+DataFig7B$LocID = factor(DataFig7B$LocID, levels=unique(DataFig7B$LocID))
+
+#figure4 A et B (segment location)
+g.bottom <- ggplot(DataFig7A) +
+        geom_segment( aes(x=DataFig7A$LocID, xend=DataFig7A$LocID, y=DataFig7A$DensityWt, yend=DataFig7A$DensityShuf, color=DataFig7A$Location), size=1) +
+        scale_color_brewer(palette="Dark2")+
+        geom_point( aes(x=DataFig7A$LocID, y=DataFig7A$DensityWt), color='darkgray', size=4.5 ) +
+        geom_point( aes(x=DataFig7A$LocID, y=DataFig7A$DensityShuf), color='black', size=3 ) +
+        #theme(axis.text.x = element_text(angle = 45))+
+        xlab(" ") +
+        ylab("pG4r Density (pG4r/kb)")
+g.top <- ggplot(DataFig7A, aes(x=DataFig7A$LocID, y=DataFig7A$GC, fill=DataFig7A$Location)) +
+          geom_bar(stat = "identity", width=0.2)+
+          scale_color_brewer(palette="Dark2")+
+          xlab(" ") +
+          ylab("GC content (%)")
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## B : Segmetnal locations, percentage of codind locations with pG4r
+
+```{r}
+g <- ggplot(DataFig7A) +
+    geom_segment( aes(x=DataFig7A$LocID, xend=DataFig7A$LocID, y=DataFig7A$PercentWt, yend=DataFig7A$PercentShuf, color=DataFig7A$Location), size=1) +
+    geom_point( aes(x=DataFig7A$LocID, y=DataFig7A$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFig7A$LocID, y=DataFig7A$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of location with pG4r (%)")
+g
+```
+
+## C : Point locations, GC content and densities
+
+```{r}
+g.bottom <- ggplot(DataFig7B) +
+        geom_segment( aes(x=DataFig7B$LocID, xend=DataFig7B$LocID, y=DataFig7B$DensityWt, yend=DataFig7B$DensityShuf, color=DataFig7B$Location), size=1) +
+        scale_color_brewer(palette="Dark2")+
+        geom_point( aes(x=DataFig7B$LocID, y=DataFig7B$DensityWt), color='darkgray', size=4.5 ) +
+        geom_point( aes(x=DataFig7B$LocID, y=DataFig7B$DensityShuf), color='black', size=3 ) +
+        #theme(axis.text.x = element_text(angle = 45))+
+        xlab(" ") +
+        ylab("pG4r Density (pG4r/kb)")
+g.top <- ggplot(DataFig7B, aes(x=DataFig7B$LocID, y=DataFig7B$GC, fill=DataFig7B$Location)) +
+          geom_bar(stat = "identity", width=0.2)+
+          scale_color_brewer(palette="Dark2")+
+          xlab(" ") +
+          ylab("GC content (%)")
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## D : Point locations, percentage of codind locations with pG4r
+
+```{r}
+g <- ggplot(DataFig7B) +
+    geom_segment( aes(x=DataFig7B$LocID, xend=DataFig7B$LocID, y=DataFig7B$PercentWt, yend=DataFig7B$PercentShuf, color=DataFig7B$Location), size=1) +
+    geom_point( aes(x=DataFig7B$LocID, y=DataFig7B$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFig7B$LocID, y=DataFig7B$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of location with pG4r (%)")
+g
+```
+
+# Figure 8 : pG4 densities, Gc content and proportion of pG4r in pseudogene transcript by locations
+
+## A : Segmental locations, GC content and densities
+
+```{r}
+DataFigure8 <- read.csv("~/Documents/TestRepro/Results/Figures/DataFig8.csv", sep="\t", header=TRUE)
+
+DataFigure8$LocID = factor(DataFigure8$LocID, levels=unique(DataFigure8$LocID))
+DataFig8A = DataFigure8[DataFigure8$Type == 'Segment',]
+DataFig8B = DataFigure8[DataFigure8$Type != 'Segment',]
+DataFig8A$LocID = factor(DataFig8A$LocID, levels=unique(DataFig8A$LocID))
+DataFig8B$LocID = factor(DataFig8B$LocID, levels=unique(DataFig8B$LocID))
+
+#figure4 A et B (segment location)
+g.bottom <- ggplot(DataFig8A) +
+        geom_segment( aes(x=DataFig8A$LocID, xend=DataFig8A$LocID, y=DataFig8A$DensityWt, yend=DataFig8A$DensityShuf, color=DataFig8A$Location), size=1) +
+        scale_color_brewer(palette="Dark2")+
+        geom_point( aes(x=DataFig8A$LocID, y=DataFig8A$DensityWt), color='darkgray', size=4.5 ) +
+        geom_point( aes(x=DataFig8A$LocID, y=DataFig8A$DensityShuf), color='black', size=3 ) +
+        #theme(axis.text.x = element_text(angle = 45))+
+        xlab(" ") +
+        ylab("pG4r Density (pG4r/kb)")
+g.top <- ggplot(DataFig8A, aes(x=DataFig8A$LocID, y=DataFig8A$GC, fill=DataFig8A$Location)) +
+          geom_bar(stat = "identity", width=0.2)+
+          scale_color_brewer(palette="Dark2")+
+          xlab(" ") +
+          ylab("GC content (%)")
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## B : Segmental locations, percentage of codind locations with pG4r
+
+```{r}
+g <- ggplot(DataFig8A) +
+    geom_segment( aes(x=DataFig8A$LocID, xend=DataFig8A$LocID, y=DataFig8A$PercentWt, yend=DataFig8A$PercentShuf, color=DataFig8A$Location), size=1) +
+    geom_point( aes(x=DataFig8A$LocID, y=DataFig8A$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFig8A$LocID, y=DataFig8A$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of transcript with pG4r (%)")
+g
+```
+
+## C : Point locations, GC content and densities
+
+```{r}
+g.bottom <- ggplot(DataFig8B) +
+        geom_segment( aes(x=DataFig8B$LocID, xend=DataFig8B$LocID, y=DataFig8B$DensityWt, yend=DataFig8B$DensityShuf, color=DataFig8B$Location), size=1) +
+        scale_color_brewer(palette="Dark2")+
+        geom_point( aes(x=DataFig8B$LocID, y=DataFig8B$DensityWt), color='darkgray', size=4.5 ) +
+        geom_point( aes(x=DataFig8B$LocID, y=DataFig8B$DensityShuf), color='black', size=3 ) +
+        #theme(axis.text.x = element_text(angle = 45))+
+        xlab(" ") +
+        ylab("pG4r Density (pG4r/kb)")
+g.top <- ggplot(DataFig8B, aes(x=DataFig8B$LocID, y=DataFig8B$GC, fill=DataFig8B$Location)) +
+          geom_bar(stat = "identity", width=0.2)+
+          scale_color_brewer(palette="Dark2")+
+          xlab(" ") +
+          ylab("GC content (%)")
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## D : Point locations, percentage of codind locations with pG4r
+```{r}
+g <- ggplot(DataFig8B) +
+    geom_segment( aes(x=DataFig8B$LocID, xend=DataFig8B$LocID, y=DataFig8B$PercentWt, yend=DataFig8B$PercentShuf, color=DataFig8B$Location), size=1) +
+    geom_point( aes(x=DataFig8B$LocID, y=DataFig8B$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataFig8B$LocID, y=DataFig8B$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of transcript with pG4r (%)")
+g
+```
+
+# Supplementary figure 1 : pG4 densities, Gc content and proportion of pG4r in pseudogene transcript by subclasses
+
+## A : GC content and densities
+
+```{r}
+DataSupFig1 <- read.csv("~/Documents/TestRepro/Results/Figures/DataSupFig1.csv", sep="\t", header=TRUE)
+
+DataSupFig1$Biotype = factor(DataSupFig1$Biotype, levels=unique(DataSupFig1$Biotype))
+
+g.bottom <- ggplot(DataSupFig1) +
+              geom_segment( aes(x=DataSupFig1$Biotype, xend=DataSupFig1$Biotype, y=DataSupFig1$DensityWt, yend=DataSupFig1$DensityShuf), size=1) +
+              geom_point( aes(x=DataSupFig1$Biotype, y=DataSupFig1$DensityWt), color='darkgray', size=4.5) +
+              geom_point( aes(x=DataSupFig1$Biotype, y=DataSupFig1$DensityShuf), color='black', size=3 ) +
+              xlab(" ") +
+              ylab(" Density in segmental location (pG4r/kb)")
+g.top <- ggplot(DataSupFig1, aes(x=DataSupFig1$Biotype, y=DataSupFig1$GC)) +
+          geom_bar(stat = "identity", width=0.05, fill = 'black')+
+          xlab(" ") +
+          ylab("GC content (%)")
+grid.arrange(g.top,g.bottom, heights = c(2/6, 4/6))
+```
+
+## B : percentage of codind locations with pG4r
+
+```{r}
+g <- ggplot(DataSupFig1) +
+    geom_segment( aes(x=DataSupFig1$Biotype, xend=DataSupFig1$Biotype, y=DataSupFig1$PercentWt, yend=DataSupFig1$PercentShuf), size=1) +
+    geom_point( aes(x=DataSupFig1$Biotype, y=DataSupFig1$PercentWt), color='darkgray', size=4.5) +
+    geom_point( aes(x=DataSupFig1$Biotype, y=DataSupFig1$PercentShuf), color='black', size=3 ) +
+    scale_color_brewer(palette="Dark2")+
+    xlab(" ") +
+    ylab("Percent of transcript with pG4r")
+g
+```
