@@ -1,4 +1,4 @@
-Welcome to G4Conserve's documentation!
+Welcome to G4HumanTranscriptome's documentation!
 ======================================
 
 This project aims to predict G-quadruplexes (G4) in the whole human's
@@ -7,13 +7,17 @@ transcriptome.
 Data availability
 =================
 
-If the upper link is not owrking here are the main step to retrieve all input files:
+`Archive data`_.
+
+.. _Archive: https://usherbrooke-my.sharepoint.com/:u:/g/personal/vana2406_usherbrooke_ca/ER3abTOB9MlMndFCvbQ0KfgBu74R3R3uP_XJoEoyIWQPCA?e=c3FROY
+
+If the upper link is not working here are the main step to retrieve all input files:
 
 * Go to the ensembl `archive Jul 2018 v93`_
 * Go to the **biotmart** download tool
 * Select the database "Ensembl Genes 93" and the dataset "Human genes (GRCh38.p12)"
-* Then, in filter select one chromosomes from **region** (1 to 22 and X Y), you
-  need to download one chromosome by one chromosome
+* Then, in filter select one chromosome from **region** (1 to 22 and X Y), you
+  need to download the chromosomes one by one
 * For the **first file type** you need to select the **attribute** Structures
   and select in order : Gene stable ID, Transcript stable ID,
   Chromosome/scaffold name, Gene type, 5' UTR start, 5' UTR end, 3' UTR start,
