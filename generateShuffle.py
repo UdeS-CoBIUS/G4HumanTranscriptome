@@ -80,7 +80,7 @@ def importFastaChromosome(directory, chr):
             sequence = "".join(l[1:])
     return sequence
 
-def writeFasta(outDir, dicoFasta, location):
+def writeFasta(outDir, dicoFasta, chr, location):
     """From a dictionary {id : seq}, write a fasta file.
 
     :param outDir: name of the directory where the output file need to be writen.
@@ -90,18 +90,32 @@ def writeFasta(outDir, dicoFasta, location):
     :param location: name of the chromosome.
     :type location: string
     """
-    output = open(outDir +'Shuffle_chr'+chr+'.fas', "w")
-    for id in dicoFasta:
-        output.write(id + "\n")
-        nbLine = math.ceil( float( len(dicoFasta[id]) ) / 60 )
-        cpt1 = 0
-        cpt2 = 60
-        for i in range(0,int(nbLine)) :
-            output.write(dicoFasta[id][cpt1:cpt2] + "\n")
-            # to have a new line after 60 characters
-            cpt1 += 60
-            cpt2 += 60
-    output.close()
+    if location == 'junction':
+        output = open(outDir +'Shuffle_chr'+chr+'_junction.fas', "w")
+        for id in dicoFasta:
+            output.write(id + "\n")
+            nbLine = math.ceil( float( len(dicoFasta[id]) ) / 60 )
+            cpt1 = 0
+            cpt2 = 60
+            for i in range(0,int(nbLine)) :
+                output.write(dicoFasta[id][cpt1:cpt2] + "\n")
+                # to have a new line after 60 characters
+                cpt1 += 60
+                cpt2 += 60
+        output.close()
+    else:
+        output = open(outDir +'Shuffle_chr'+chr+'.fas', "w")
+        for id in dicoFasta:
+            output.write(id + "\n")
+            nbLine = math.ceil( float( len(dicoFasta[id]) ) / 60 )
+            cpt1 = 0
+            cpt2 = 60
+            for i in range(0,int(nbLine)) :
+                output.write(dicoFasta[id][cpt1:cpt2] + "\n")
+                # to have a new line after 60 characters
+                cpt1 += 60
+                cpt2 += 60
+        output.close()
 
 def reverseSequence(Sequence):
     """ Reverse complement a DNA sequence.
@@ -426,7 +440,26 @@ def createFasta(dico, fastaFile, chr, outputDir):
                 listTr = [ tr+'-'+dico[gene][location][tr] for tr in dico[gene][location] ]
                 id = '>'+gene+':'+location+':'+'|'.join(listTr)
                 fastaRandom[id] = randomSeq
-    writeFasta(outputDir, fastaRandom, chr)
+    writeFasta(outputDir, fastaRandom, chr, 'all')
+
+def fromFasta(filename, outDir, chr, dico):
+    fastaOri = SeqIO.parse(open(filename), 'fasta')
+    fastaShuf = {}
+    for fasta in fastaOri:
+        name, seq = fasta.id, str(fasta.seq)
+        seq = shuffleSeq(seq)
+        gene = name.split('|')[0]
+        coords = name.split('|')[1]
+        for loc in dico[gene]:
+            if coords in loc:
+                location = loc
+        chr = location.split(':')[1]
+        coords = location.split(':')[2]
+        strand = location.split(':')[3]
+        listTr = [ tr+'-'+dico[gene][location][tr] for tr in dico[gene][location] ]
+        name = '>'+gene+':junction:'+chr+':'+coords+':'+strand+':'+'|'.join(listTr)
+        fastaShuf[name] = seq
+    writeFasta(outputDir, fastaShuf, chr, 'junction')
 
 def build_arg_parser():
     parser = argparse.ArgumentParser(description = 'generateRandom')
@@ -440,11 +473,13 @@ if __name__ == '__main__':
     arg = parser.parse_args()
     chr = arg.chromosome
     path = arg.path
-    fastaFile = path+'Fasta/'
+    fastaFile = path+'/Fasta/'
     outputDir = path+'/chr'+chr+'/'
+    fastaJunction = path+'/chr'+chr+'/HS_transcript_unspliced_chr'+chr+'_Sequence.txt'
     print(chr)
     dicoBt = rF.createDictionaryBiotypeByTranscript(path+
-            '/transcriptType/transcriptType_chr'+chr)
+            '/transcriptType/transcriptType_chr'+chr+'.txt')
     dicoInfo = getDicoIndex(path+'/chr'+chr+'/HS_transcript_unspliced_chr'+
             chr+'_Index.txt', dicoBt)
     createFasta(dicoInfo, fastaFile, chr, outputDir)
+    fromFasta(fastaJunction, outputDir, chr, dicoInfo)
